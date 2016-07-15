@@ -5,20 +5,25 @@
 ##### [millerlab.rice.edu] (http://millerlab.rice.edu)
 
 ###Overview
-- 
+
+ Coming soon...
+
+
+![photo of pneumatics setup](PicsVids/OpenSourcePneumaticSystem.jpg)
 
 ###Build Documentation
 This git repository includes:
-- Current firmware
-- Processing GUI
+- Current firmware for Industruino IND.I/O kit
+- Processing GUI to control the Industruino from a computer
 - Wiring diagram for electronics configuration
-- Bill of Materials
+- Bill of Materials for all parts we are using
 
 ###Installation Instructions
 
- 
-![MillerLab logo](https://github.com/MillerLabFTW/OpenSLS/blob/master/MillerLab_logo.jpg)
+ Coming soon...
 
 
 ###Acknowledgements
-- 
+
+
+![MillerLab logo](MillerLab_logo.jpg)
