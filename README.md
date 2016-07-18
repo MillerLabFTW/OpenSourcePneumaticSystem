@@ -34,7 +34,7 @@ This can be determined using Device Manager and the port connectivity tool we've
 4. Click the run button on Processing, then install ControlP5, minim, and sound libraries if prompted
 5. ... (more thorough instructions coming soon)
 
-Getting started:
+#####Getting started:
 1. Open ProcessingGUI in Processing
 2. Connect Industruino to computer via USB
 3. Run the ProcessingGUI in Processing. If a port error occurs, you can follow our troubleshooting guide (see below)
@@ -42,6 +42,8 @@ Getting started:
 5. Press 0 to stop the program
 
 ###Configuration
+ Coming soon...
+
 ####I want to:
 ######Change the ramp step size
 
