@@ -10,6 +10,7 @@
 
 
 ![photo of pneumatics setup](PicsVids/OpenSourcePneumaticSystem.jpg)
+![photo of pneumatics setup](PicsVids/ProcessingGUI.PNG)
 
 ###Build Documentation
 This git repository includes:
@@ -50,7 +51,7 @@ Locate the COM port that Industruino is connected to (determined in step 2), and
 ![photo of CheckSerialPort script](PicsVids/CheckSerialPort.PNG)
 4. Open ProcessingGUI and navigate to line 90. Change the bracketed number to the index noted in step 3.
 These steps can be repeated to troubleshoot any port connectivity issues, as the COM number assigned to Industruino 
-will be based on USB port used and other connected devices
+will depend on USB port used and other connected devices
 
 ###Configuration
  Coming soon...
