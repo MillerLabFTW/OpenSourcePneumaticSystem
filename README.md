@@ -44,10 +44,10 @@ This can be determined by locating "Arduino Leonardo" under the "Ports" dropdown
 #####Using CheckSerialPort to Determine Port Number
 1. Connect Industruino to the desired USB port on your computer
 2. Open Device Manager and navigate to the Ports(COM & LPT) dropdown. Find "Arduino Leonardo" and take note of its assigned COM number
-![photo of device manager](PicsVids/DeviceManager_PortNo.jpg)
+![photo of device manager](PicsVids/DeviceManager_PortNo.PNG)
 3. Next, open "CheckSerialPort" in Processing and run the program. Active COM ports will be listed, along with their indices in the ports list.
 Locate the COM port that Industruino is connected to (determined in step 2), and take note of its index.
-![photo of CheckSerialPort script](PicsVids/CheckSerialPort.jpg)
+![photo of CheckSerialPort script](PicsVids/CheckSerialPort.PNG)
 4. Open ProcessingGUI and navigate to line 90. Change the bracketed number to the index noted in step 3.
 These steps can be repeated to troubleshoot any port connectivity issues, as the COM number assigned to Industruino 
 will be based on USB port used and other connected devices
