@@ -21,8 +21,4 @@ void setup()
   // Open whatever port is the one you're using.
   String[] availablePorts = Serial.list();
   printArray(availablePorts);
-  String portName = Serial.list()[0];
-  println(portName);
-  myPort = new Serial(this, portName, 9600);
-  println(myPort);
 }

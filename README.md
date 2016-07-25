@@ -1,13 +1,13 @@
 # MillerLab Pneumatic System
-
 ##### An open-source, Arduino-based Pneumatic system developed at Rice University
 ##### Miller Lab: Physiologic Systems Engineering and Advanced Materials
 ##### [millerlab.rice.edu] (http://millerlab.rice.edu)
+##### Developed by Jordan Miller, Bagrat Grigoryan, Paul Greenfield and Nick Calafat
+##### Documentation by Nick Calafat
 
 ### Overview
-
 The MillerLab Pneumatic system is an open-source pneumatic fluid control system for conducting microfluidic experiments, utilizing an Industruino board and a Processing-based GUI for controlling the system.
-Our specific setup operates on a 0-30 psi range, but system components can be easily customized. We've also provided a guide to making firmware changes for further customization. Enjoy!
+Our specific setup operates on a 0-30psi range, but system components can be easily customized. We've also provided a guide to making firmware changes for further customization. Enjoy!
 
 ![photo of pneumatics setup](PicsVids/OpenSourcePneumaticSystem.jpg)
 ![image of Processing GUI](PicsVids/ProcessingGUI.PNG)
@@ -49,11 +49,10 @@ This git repository includes:
 2. Open Device Manager and navigate to the Ports(COM & LPT) dropdown. Find "Arduino Leonardo" and take note of its assigned COM number
    ![photo of device manager](PicsVids/DeviceManager_PortNo.PNG)
 3. Next, open "CheckSerialPort" in Processing and run the program. Active COM ports will be listed, along with their indices in the ports list.
-   Locate the COM port that Industruino is connected to (determined in step 2), and take note of its index.
+   Locate the COM port that Industruino is connected to (determined in step 2), and take note of its index
    ![photo of CheckSerialPort script](PicsVids/CheckSerialPort.PNG)
 4. Open ProcessingGUI and navigate to line 90. Change the bracketed number to the index noted in step 3.
-   These steps can be repeated to troubleshoot any port connectivity issues, as the COM number assigned to Industruino 
-   will depend on USB port used and other connected devices
+   These steps can be repeated to troubleshoot any port connectivity issues, as the COM number assigned to Industruino will depend on USB port used and other connected devices
 
 ###Configuration
  Coming soon...
@@ -67,6 +66,6 @@ This git repository includes:
 
 
 ###Acknowledgements
-- Thanks to Arduino and Processing for providing the open-source software that enabled us to build our pneumatic system
-
+- Thanks to [Arduino] (https://www.arduino.cc) and [Processing] (https://processing.org) for the open-source software that enabled us to build our pneumatic system
+- Thanks to [Industruino] (https://industruino.com) for providing the industrial board for controlling our system
 ![MillerLab logo](PicsVids/MillerLab_logo.jpg)
