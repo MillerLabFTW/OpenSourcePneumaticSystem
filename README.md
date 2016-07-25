@@ -1,12 +1,13 @@
 # MillerLab Pneumatic System
 
-##### An open-source Arduino-based Pneumatic system developed at Rice University
+##### An open-source, Arduino-based Pneumatic system developed at Rice University
 ##### Miller Lab: Physiologic Systems Engineering and Advanced Materials
 ##### [millerlab.rice.edu] (http://millerlab.rice.edu)
 
 ### Overview
 
- Coming soon...
+The MillerLab Pneumatic system is an open-source pneumatic fluid control system for conducting microfluidic experiments, utilizing an Industruino board and a Processing-based GUI for controlling the system.
+Our specific setup operates on a 0-30 psi range, but system components can be easily customized. We've also provided a guide to making firmware changes for further customization. Enjoy!
 
 ![photo of pneumatics setup](PicsVids/OpenSourcePneumaticSystem.jpg)
 ![image of Processing GUI](PicsVids/ProcessingGUI.PNG)
@@ -66,5 +67,6 @@ This git repository includes:
 
 
 ###Acknowledgements
+- Thanks to Arduino and Processing for providing the open-source software that enabled us to build our pneumatic system
 
 ![MillerLab logo](PicsVids/MillerLab_logo.jpg)
