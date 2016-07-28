@@ -2,10 +2,10 @@
 ##### An open-source, Arduino-based Pneumatic system developed at Rice University
 
 
-**Miller Lab: Physiologic Systems Engineering and Advanced Materials
-[millerlab.rice.edu](http://millerlab.rice.edu)
-Developed by Jordan Miller, Bagrat Grigoryan, and Paul Greenfield
-Documentation by Nick Calafat**
+**Miller Lab: Physiologic Systems Engineering and Advanced Materials**
+**[millerlab.rice.edu](http://millerlab.rice.edu)**
+**Developed by Jordan Miller, Bagrat Grigoryan, and Paul Greenfield**
+**Documentation by Nick Calafat**
 
 ### Overview
 The MillerLab Pneumatic system is an open-source pneumatic fluid control system for conducting microfluidic experiments, utilizing an Industruino board and a Processing-based GUI for controlling the system.
