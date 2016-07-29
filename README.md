@@ -4,7 +4,8 @@
 
 #####[Miller Lab: Physiologic Systems Engineering and Advanced Materials Laboratory](http://millerlab.rice.edu)
 Developed by Jordan Miller, Bagrat Grigoryan, and Paul Greenfield
-Documentation by Nick Calafat
+
+Documentation by Nick Calafat and Jordan Miller
 
 ## Overview
 The MillerLab Pneumatic system is an open-source pneumatic fluid control system for conducting microfluidic experiments, utilizing an [Industruino](http://www.industruino.com/) board and a [Processing](http://www.processing.org/)-based graphical user interface **(GUI)** for controlling the system.
@@ -13,35 +14,60 @@ Our typical configuration operates on a 0-30 psi range, but system components ca
 
 ![photo of pneumatics setup](PicsVids/OpenSourcePneumaticSystem.jpg)
 
-##Build Documentation
+Figure 1. Our recommended configuration consists of a computer running [Processing](http://www.processing.org), connected via USB to the [Industruino](http://www.industruino.com), which is controlling the pneumatics hardware (in this case, an [IP converter](http://www.omega.com/pptst/IP610.html) and a [Digital Pressure Gauge](http://www.omega.com/pptst/DPG1000.html) from [Omega](http://www.omega.com/)). The pneumatics components are conveniently mounted on an [Onstage DIN-rail desktop rack mount](https://on-stage.com/products/view/11185).
+
+
+![image of Processing GUI](PicsVids/ProcessingGUI.PNG)
+
+Figure 2. The Processing-based graphical user interface to control the pneumatic system.
+
+
+##Repository Contents
 This git repository includes:
-- Current firmware for Industruino IND.I/O kit
-- Processing GUI to control the Industruino from a computer
-- Wiring diagram for electronics configuration
-- Bill of Materials for all the parts we are using
+
+1. Current firmware for [Industruino IND.I/O kit](https://industruino.com/shop/product/industruino-ind-i-o-kit-2)
+1. Processing GUI to control the Industruino from a computer
+1. Wiring diagram for electronics configuration
+1. Bill of Materials for all the parts we are using
 
 
-##Required Hardware
+##Hardware Setup
 
+### Setting up the Pneumatic Device
+
+The complete Bill-of-Materials for this [Industruino](http://www.industruino.com/)-based system are provided in the document `Pneumatic System Bill of Materials` located in this repository. Currently, required items are roughly $500 and the grand total for all recommended items (including the required items) is roughly $1,200. Because [Industruino](http://www.industruino.com/) is DIN-rail mountable, we have included in the recommended items a DIN rail rack desktop mount for flexible configuration, easy wiring, and minimal consumption of desk space.
+
+[Industruino IND.I/O kit](https://industruino.com/shop/product/industruino-ind-i-o-kit-2) can operate anywhere from 6.5-32V DC. We found some great, high precision pneumatics hardware from Omega that operates at 24V. So, we use a 24V power supply to drive the entire rig.
+
+1. Follow the `Pneumatic System Wiring Diagram` and make sure everything is connected properly. It's critical to make sure you have the Analog Input/Output sharing DC ground (`Wire 6` in the wiring diagram). `Wire 3` is optional, for debugging by reading the output from `Analog OUTPUT CH2` with the input from `Analog INPUT CH2`. `Wire 4`, `Wire 5`, and `Wire 7` are only needed if you want to use a digital pressure gauge to validate the actual output pressure is what you expect it to be. Because Industruino can take 4-20 mA inputs, and the digital pressure gauge we selected outputs its reading over 4-20 mA, we can actually use the Industruino itself to read this independent signal and report to the user (via the Processing GUI) the actual measured output pressure.
+
+![image of Wiring Diagram](Pneumatic System Wiring Diagram.jpg)
+
+
+
+
+### Recommended Computer for Controlling the Pneumatics Device
 [Arduino](http://www.arduino.cc/), [Industruino](https://industruino.com), and [Processing](http://processing.org/) are all cross-platform hardware and software systems, making them super awesome! **As such, this setup works well with Linux, MacOS, and Windows computer systems.**
 
 To use this equipment you will need a tethered computer and display for live control of the pneumatic system. This could be a computer laptop, or even a very simple and low cost single board computer such as a [Raspberry Pi](https://www.raspberrypi.org/). Setting up and configuring a Raspberry Pi is outside the scope of this README, but if you're interested, we direct you to the [Rice Bioe 421/521 Microcontroller Applications](https://github.com/jmil/Bioe421_521-MicrocontrollerApplications) class; all the labs are available online and Lab 01 gets you going configuring a Raspberry Pi and getting it on the Internet and installing Arduino software.
 
-##Installation Instructions
+##Software Installation Instructions
+
 ###Uploading Firmware to Industruino
 1. Download the latest version of Arduino from [https://www.arduino.cc/en/Main/Software](https://www.arduino.cc/en/Main/Software)
-2. Connect Industruino to computer via USB connection
-3. Open PneumaticFirmware in Arduino
-4. On the Arduino taskbar, navigate to `Tools`->`Board` and select `Arduino Leonardo`. Next, navigate to `Tools`->`Port` and select the COM port assigned to Industruino. The correct COM port can be determined by locating `Arduino Leonardo` under the `Ports` dropdown in Device Manager
-5. Finally, upload the `PneumaticFirmware.ino` to Industruino using the upload button in Arduino Software
+1. Connect Industruino to computer via USB connection
+1. Open PneumaticFirmware in Arduino
+1. On the Arduino taskbar, navigate to `Tools`->`Board` and select `Arduino Leonardo`. Next, navigate to `Tools`->`Port` and select the COM port assigned to Industruino. The correct COM port can be determined by locating `Arduino Leonardo` under the `Ports` dropdown in Device Manager
+1. Finally, upload the `PneumaticFirmware.ino` to Industruino using the upload button in Arduino Software
 
 ###Processing and Libraries Installation
-1. Download the latest version of Processing from https://processing.org/download/
-2. Connect Industruino to computer via USB connection
-3. Open ProcessingGUI in Processing and run the program. If all libraries are installed, the GUI will open and you can proceed to the next section. 
+1. Download the latest version of Processing from [https://processing.org/download/](https://processing.org/download/)
+1. Connect Industruino to computer via USB connection
+1. Open `ProcessingGUI` in Processing and run the program. If all libraries are installed, the GUI will open and you can proceed to the next section. 
 If a library is missing, one of the following errors may occur:
 ![image of error in Processing console](PicsVids/ProcessingLibraryError.PNG)
-4. Libraries can be installed by accessing `Sketch`->`Import Library`->`Add Library` on the Processing Taskbar. Find the missing libraries and press install. Libraries will automatically install to the Processing sketchbook
+1. Libraries can be installed by accessing `Sketch`->`Import Library`->`Add Library` on the Processing Taskbar. Find the missing libraries and press install. Libraries will automatically install to the Processing sketchbook
+1. Once all the libraries are installed, try to run the GUI again.
 
 ###GUI Overview
 The Processing GUI (depicted below) allows the user to specify settings for a pneumatic program. 
@@ -54,15 +80,38 @@ Beneath the sliders, numeric indicators display current program settings and sys
 ![image of Processing GUI](PicsVids/ProcessingGUI.PNG)
 
 
-###Starting a Pneumatic Program
+###Starting and Understanding a Pneumatics Program
 1. Connect Industruino to computer via USB
 1. Open `ProcessingGUI` in Processing
-1. Run the ProcessingGUI in Processing. If a port error occurs, you can follow our troubleshooting guide (see below)
-1. Specify the desired pneumatic settings and press Enter to run the program, or run your custom program (see Configuration for instructions on creating a custom program)
-1. Press 0 to stop the program
+1. Run the ProcessingGUI in Processing. If the GUI launches, you are nearly there! If, instead, a port error occurs, you can follow our troubleshooting guide (see below)
+
+1.	**USAGE NOTE: We use PWM values on the GUI sliders, a purposeful stylistic choice by us.** Using PWM values (from 0-4096) provide the highest possible resolution to controlling the Industruino. You can learn more from the Industruino default programs that come with their sample firmware. Additionally, since users might want to use different pneumatics equipment than what we have selected (notably, with a different psi range than what we are using), using PWM values in the GUI provides the most flexibility for end users. You will have to calibrate they system yourself if you use a pneumatics system different from our recommendation. **We use Industruino in `mA` mode, which maps 0-4096 PWM to 0-20 mA**, and [our recommended IP converter](http://www.omega.com/pptst/IP610.html) takes 4-20 mA signal and outputs 0-30 psi of gas pressure.
+
+1. Specify the desired pneumatic settings by adjusting the sliders under `Choose starting PWM` and `Choose ending PWM` and press `<Enter>` on the keyboard to run the program. You can alternatively run a custom program with a pre-programmed keypress (see Configuration for instructions on creating a custom program)
+
+	**SAFETY NOTE: For safety with pneumatics systems (and to protect pneumatics hardware from high frequency oscillations), the air pressure is not changed "live". Instead, the use should set the desired PWM, then press the `<Enter>` key to send values to the pneumatics system**
+
+1. Press `0` on the keyboard to stop the program and reset all values to `0`.
+
+The default `ProcessingGUI` has the following THREE MODES:
+
+	key		Result
+	1		Activate CONSTANT mode
+	2		Activate PULSE mode
+	3		Activate RAMP mode
+	0		Turn off all pneumatics (set them to 0) and go back to CONSTANT mode
+	
+CONSTANT Mode
+Uses the Starting PWM setting, and keeps the pneumatics at that CONSTANT value.
+
+PULSE Mode
+This mode oscillates between the Starting and Ending PWM values, with the `ms interval` setting as the delay between each switch, in milliseconds.
+
+RAMP Mode
+This mode steadily ramps PWM between the Starting and Ending PWM values, with the `ms interval` as the delay between steps. The default Arduino firmware has set the stepsize to be 10 PWM units, but you can change this in the Arduino firmware to be less or more depending on your needs.
 
 
-###Use `CheckSerialPort.pde` to Determine Port Number
+###Troubleshooting: Use `CheckSerialPort.pde` to Determine Port Number
 
 **NOTE: As detailed above, This equipment is compatible with Linux, Mac, and Windows systems because Arduino, Industruino, and Processing are compatible with those systems. The below details are for Windows, other platform-specific instructions may be provided at a later time.**
 
@@ -90,7 +139,7 @@ For example, in the GUI configuration shown above we have a 1000ms interval set,
 
   
 ####Customize the Processing interface
-The resolution on the PWM slider is autoscaled based on the range of PWM availble and the size of the GUI window. Thus, if you want greater resolution for a certain project, you can restrict the PWM slider to the range you're working in. For instance, changing min_PWM to 1000 and max_PWM to 2000 would increase the precision of the PWM slider scale in the Processing GUI. The interval line sets the default ms time interval.
+The resolution on the PWM slider is autoscaled based on the range of PWM available and the size of the GUI window. Thus, if you want greater control precision using your mouse for a certain project, you can restrict the PWM slider to the range you're working in. For instance, changing `min_PWM` to `1000` and `max_PWM` to `2000` would increase the precision of the PWM slider scale in the Processing GUI. The interval line sets the default ms time interval.
 
 	int min_PWM = 0;
 	int max_PWM = 3995;
@@ -98,12 +147,54 @@ The resolution on the PWM slider is autoscaled based on the range of PWM availbl
     
     
 ####Create a custom pneumatic program
-The following code specifies a pneumatic program that ramps from 1300 to 2100 PWM at a 0ms interval (continuous ramp).
-This code can be modified to create your own program. It can also be copied to create additional programs (just change the initiating key and the desired parameters).
+Processing can easily take keyboard input, so we have a section of the `ProcessingGUI` code that allows for custom setup of reproducible pneumatic programs simply by pressing the keyboard key of your choice.
+
+The relevant section of the `ProcessingGUI` code begins:
+
+	void keyPressed() {
+	  switch(key) {
+	    case('1'):
+	      modeSelected.activate(0);
+	      break;
+	    case('2'):
+	      modeSelected.activate(1);
+	      break;
+	    case('3'):
+	      modeSelected.activate(2);
+	      break;
+	    ...
+	    
+This section tells Processing to "listen" for keyboard strikes, and to run the following code afterwards. So, if the user presses the `1` key, the modeSelected will be `0`. Recall from above: `modeSelected = 0` corresponds to the `CONSTANT` pneumatic mode where the "starting PWM" value from the GUI is used.
+
+A custom program on a unique keypress can be made simply by adding to this `switch` in the code. The syntax you must have is:
+
+	case('x'):
+		// Set some values here
+	   break;
+
+Where **'x'** is the keyboard key you want to activate your program. As another example, study this next bit of code carefully and you will hopefully see how pressing the `0` key is able to programmatically shut off all pneumatics and go back to CONSTANT mode:
+
+    case('0'):
+      min.setValue(0);
+      max.setValue(0);
+      interval = 0;
+      modeSelected.activate(0);
+      break;
+
+
+**A more sophisticated example:** Here, we demonstrate a pneumatic program that ramps from `1300` to `2100` PWM at a `0`ms interval in continuous RAMP mode. We also synchronized the beginning of the program with an audible tone being played (`tone.wav`). Note that `tone.wav` is set in the `setup()` section with:
+
+	  // PREPARE WAV FILE TO BE PLAYED
+	  minim = new Minim(this);
+	 
+	  // this loads mysong.wav from the data folder
+	  song = minim.loadFile("tone.wav");
+
+
+The desired custom program can therefore be activated when pressing the `5` key with this added `case`:
 
     case('5'):			//specifies the numeric key that initiates the program (pressing 5 sets the following parameters)
-
-      							//Using minim library to simply play the wav file:
+      //Using minim library to simply play the wav file:
       song.play(); 				// play the tone.wav file in the current directory
       song.rewind(); 			// "rewind" it so it can be played again
       min.setValue(1300);		//specifies the starting PWM
@@ -115,5 +206,5 @@ This code can be modified to create your own program. It can also be copied to c
 
 ##Acknowledgements
 - Thanks to [Arduino](https://www.arduino.cc) and [Processing](https://processing.org) for the open-source software that enabled us to build our pneumatic system
-- Thanks to [Industruino](https://industruino.com) for providing the industrial board for controlling our system
+- Thanks to [Industruino](https://industruino.com) for designing the Industruino board, and for their detailed help files and general tech support we relied on to develop this system.
 ![MillerLab logo](PicsVids/MillerLab_logo.jpg)

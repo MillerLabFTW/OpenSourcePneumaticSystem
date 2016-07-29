@@ -259,25 +259,14 @@ void keyPressed() {
   switch(key) {
     case('1'):
       modeSelected.activate(0);
-      //sendDataToArduino();
       break;
     case('2'):
       modeSelected.activate(1);
-      //sendDataToArduino();
       break;
     case('3'):
-      //println(modeSelected.getValue());
       modeSelected.activate(2);
-      //sendDataToArduino();
       break;
     case('5'):
-       // Create the sine oscillator
-       // SinOsc sine;
-       // sine = new SinOsc(this);
-       // sine.play();     
-       // delay(500);
-       // sine.stop();
-      
       //Using minim library to simply play the wav file:
       song.play(); // play the tone.wav file in the current directory
       song.rewind(); // "rewind" it so it can be played again
