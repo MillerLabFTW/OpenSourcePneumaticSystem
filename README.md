@@ -110,7 +110,7 @@ This mode oscillates between the Starting and Ending PWM values, with the `ms in
 RAMP Mode
 This mode steadily ramps PWM between the Starting and Ending PWM values, with the `ms interval` as the delay between steps. The default Arduino firmware has set the stepsize to be 10 PWM units, but you can change this in the Arduino firmware to be less or more depending on your needs.
 
-![video of Processing GUI functions](PicsVids/PneumaticBehaviors.PNG)
+![video of Processing GUI functions](PicsVids/PneumaticBehaviors.mp4)
 
 
 ###Troubleshooting: Use `CheckSerialPort.pde` to Determine Port Number
