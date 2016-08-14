@@ -122,8 +122,10 @@ For a demonstration of GUI functionality and the three pneumatic modes, check ou
 1. Connect Industruino to the desired USB port on your computer
 1. Open Device Manager and navigate to the `Ports(COM & LPT)` dropdown. Find `Arduino Leonardo` and take note of its assigned COM number
    ![photo of device manager](PicsVids/DeviceManager_PortNo.PNG)
-1. Next, open `CheckSerialPort.pde` in Processing and run the program. Active COM ports will be listed, along with their indices in the ports list. Locate the COM port that Industruino is connected to (determined in step 2), and take note of its index
+1. Next, open `CheckSerialPort.pde` in Processing and run the program. Active COM ports will be listed, along with their indices in the ports list. Locate the COM port that Industruino is connected to (determined in step 2), and take note of its index.
+
    ![photo of CheckSerialPort script](PicsVids/CheckSerialPort.PNG)
+
 1. Open ProcessingGUI and navigate to the following line:
 	
 		String portName = Serial.list()[0]; //change the 0 to a 1 or 2 etc. to match your port
