@@ -89,7 +89,7 @@ Beneath the sliders, numeric indicators display current program settings and sys
 
 1. Specify the desired pneumatic settings by adjusting the sliders under `Choose starting PWM` and `Choose ending PWM` and press `<Enter>` on the keyboard to run the program. You can alternatively run a custom program with a pre-programmed keypress (see Configuration for instructions on creating a custom program)
 
-	**SAFETY NOTE: For safety with pneumatics systems (and to protect pneumatics hardware from high frequency oscillations), the air pressure is not changed "live". Instead, the use should set the desired PWM, then press the `<Enter>` key to send values to the pneumatics system**
+	**SAFETY NOTE: For safety with pneumatics systems (and to protect pneumatics hardware from high frequency oscillations), the air pressure is not changed "live". Instead, the user should set the desired PWM, then press the `<Enter>` key to send values to the pneumatics system**
 
 1. Press `0` on the keyboard to stop the program and reset all values to `0`.
 
@@ -110,8 +110,8 @@ This mode oscillates between the Starting and Ending PWM values, with the `ms in
 RAMP Mode
 This mode steadily ramps PWM between the Starting and Ending PWM values, with the `ms interval` as the delay between steps. The default Arduino firmware has set the stepsize to be 10 PWM units, but you can change this in the Arduino firmware to be less or more depending on your needs.
 
-![video of Processing GUI functions](PicsVids/PneumaticBehaviors.mp4)
-
+For a demonstration of GUI functionality and the three pneumatic modes, check out this video!
+![Processing GUI functions](PicsVids/PneumaticBehaviors.mp4)
 
 ###Troubleshooting: Use `CheckSerialPort.pde` to Determine Port Number
 
@@ -125,10 +125,10 @@ This mode steadily ramps PWM between the Starting and Ending PWM values, with th
 1. Next, open `CheckSerialPort.pde` in Processing and run the program. Active COM ports will be listed, along with their indices in the ports list. Locate the COM port that Industruino is connected to (determined in step 2), and take note of its index
    ![photo of CheckSerialPort script](PicsVids/CheckSerialPort.PNG)
 1. Open ProcessingGUI and navigate to the following line:
+	
 		String portName = Serial.list()[0]; //change the 0 to a 1 or 2 etc. to match your port
-Change the bracketed number to the index noted in step 3. These steps can be repeated to troubleshoot any port connectivity issues, as the COM number assigned to Industruino will depend on USB port used and other connected devices
 
-
+	Change the bracketed number to the index noted in step 3. These steps can be repeated to troubleshoot any port connectivity issues, as the COM number assigned to Industruino will depend on USB port used and other connected devices
 
 
 ##More Configuration Options and Examples
