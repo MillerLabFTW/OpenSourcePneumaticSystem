@@ -54,20 +54,27 @@ To use this equipment you will need a tethered computer and display for live con
 ##Software Installation Instructions
 
 ###Uploading Firmware to Industruino
-1. Download the latest version of Arduino from [https://www.arduino.cc/en/Main/Software](https://www.arduino.cc/en/Main/Software)
-1. Connect Industruino to computer via USB connection
-1. Open PneumaticFirmware in Arduino
-1. On the Arduino taskbar, navigate to `Tools`->`Board` and select `Arduino Leonardo`. Next, navigate to `Tools`->`Port` and select the COM port assigned to Industruino. The correct COM port can be determined by locating `Arduino Leonardo` under the `Ports` dropdown in Device Manager
-1. Finally, upload the `PneumaticFirmware.ino` to Industruino using the upload button in Arduino Software
+1. Download the latest version of Arduino for your OS from [https://www.arduino.cc/en/Main/Software](https://www.arduino.cc/en/Main/Software)
+**Note: Arduino versions 1.6.* or higher are required to communicate with Industruino using the indio.h library**
+1. Connect Industruino to your computer via USB connection and open Arduino
+1. On the Arduino taskbar, navigate to `Tools`->`Board` and select `Arduino Leonardo`. Next, navigate to `Tools`->`Port` and select the COM port assigned to Industruino.
+On Windows, the correct COM port can be determined by locating `Arduino Leonardo` under the `Ports` dropdown in Device Manager. For Mac and Linux operating systems, Arduino Leonardo is listed beginning with `/dev/tty`. The exact port number can be determined using our troubleshooting guide (see below), or you may guess and check (see step 5)
+2. We recommend using the blink sketch included in the Arduino software to test your connection to Industruino. To do this, follow `File`->`Examples`->`01.Basics`->`Blink`.
+If you have the correct board and port selected, your Industruino display should blink once each second after uploading the blink example sketch. This is a simple way to verify your board and port selection
+1. Next,  you will need to install a few libraries used in the PneumaticFirmware sketch. First, download the Indio.h and UC1701 libraries from the [Industruino Github repository] (https://github.com/Industruino/).
+The most simple way to install these libraries is from a ZIP folder, so navigate to the [UC1701] (https://github.com/Industruino/UC1701) and [Indio] repositories, then click `Clone or download` -> `Download ZIP` in the top right corner.
+1. Return to Arduino and navigate to `Sketch`->`Include Library`->`Add .ZIP Library...`. Locate the ZIP folder for either Indio or UC1701, then repeat this process for the other library.
+2. Next we'll install the U8glib library. To do this, navigate to `Sketch`->`Include Library`->`Manage Libraries...`. Locate and install the U8glib library.
+1. Finally, open `PneumaticFirmware.ino` in Arduino and upload to Industruino using the upload button.
 
 ###Processing and Libraries Installation
-1. Download the latest version of Processing from [https://processing.org/download/](https://processing.org/download/)
+1. Download the latest version of Processing for your OS from [https://processing.org/download/](https://processing.org/download/)
 1. Connect Industruino to computer via USB connection
 1. Open `ProcessingGUI` in Processing and run the program. If all libraries are installed, the GUI will open and you can proceed to the next section. 
 If a library is missing, one of the following errors may occur:
 ![image of error in Processing console](PicsVids/ProcessingLibraryError.PNG)
-1. Libraries can be installed by accessing `Sketch`->`Import Library`->`Add Library` on the Processing Taskbar. Find the missing libraries and press install. Libraries will automatically install to the Processing sketchbook
-1. Once all the libraries are installed, try to run the GUI again.
+1. Libraries can be installed by accessing `Sketch`->`Import Library`->`Add Library` on the Processing Taskbar. From this list, find and install the missing libraries. Libraries will automatically install to the Processing sketchbook
+1. Once all the libraries are installed, try to run the GUI again
 
 ###GUI Overview
 The Processing GUI (depicted below) allows the user to specify settings for a pneumatic program. 
