@@ -58,12 +58,12 @@ To use this equipment you will need a tethered computer and display for live con
 **Note: Arduino versions 1.6.* or higher are required to communicate with Industruino using the indio.h library**
 1. Connect Industruino to your computer via USB connection and open Arduino
 1. On the Arduino taskbar, navigate to `Tools`->`Board` and select `Arduino Leonardo`. Next, navigate to `Tools`->`Port` and select the COM port assigned to Industruino.
-On Windows, the correct COM port can be determined by locating `Arduino Leonardo` under the `Ports` dropdown in Device Manager. For Mac and Linux operating systems, Arduino Leonardo is listed beginning with `/dev/tty`. The exact port number can be determined using our troubleshooting guide (see below), or you may guess and check (see step 5)
-2. We recommend using the blink sketch included in the Arduino software to test your connection to Industruino. To do this, follow `File`->`Examples`->`01.Basics`->`Blink`.
-If you have the correct board and port selected, your Industruino display should blink once each second after uploading the blink example sketch. This is a simple way to verify your board and port selection
-1. Next,  you will need to install a few libraries used in the PneumaticFirmware sketch. First, download the Indio.h and UC1701 libraries from the [Industruino Github repository] (https://github.com/Industruino/).
-The most simple way to install these libraries is from a ZIP folder, so navigate to the [UC1701] (https://github.com/Industruino/UC1701) and [Indio] repositories, then click `Clone or download` -> `Download ZIP` in the top right corner.
-1. Return to Arduino and navigate to `Sketch`->`Include Library`->`Add .ZIP Library...`. Locate the ZIP folder for either Indio or UC1701, then repeat this process for the other library.
+On Windows, the correct COM port can be determined by locating `Arduino Leonardo` under the `Ports` dropdown in Device Manager. For Mac and Linux operating systems, Arduino Leonardo is listed beginning with `/dev/tty`. The exact port number can be determined using our troubleshooting guide (see below), or you may guess and check (see step 4)
+2. We recommend using the blink sketch included in the Arduino software to test the connection to Industruino. To do this, follow `File`->`Examples`->`01.Basics`->`Blink`.
+If you have the correct board and port selected, your Industruino display should blink once each second after uploading the blink example sketch. This is a simple way to verify your port selection
+1. Next,  you will need to install a few libraries used in the PneumaticFirmware sketch. First, download the Indio and UC1701 libraries from the [Industruino Github repository] (https://github.com/Industruino/).
+The simplest way to install these libraries is from a ZIP folder, so navigate to the [UC1701] (https://github.com/Industruino/UC1701) and [Indio] (https://github.com/Industruino/Indio) repositories, then click `Clone or download` -> `Download ZIP` in the top right corner.
+1. Return to Arduino and navigate to `Sketch`->`Include Library`->`Add .ZIP Library...`. Locate the ZIP folder for either Indio or UC1701, then repeat this step to install the other library.
 2. Next we'll install the U8glib library. To do this, navigate to `Sketch`->`Include Library`->`Manage Libraries...`. Locate and install the U8glib library.
 1. Finally, open `PneumaticFirmware.ino` in Arduino and upload to Industruino using the upload button.
 
