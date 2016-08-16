@@ -44,18 +44,17 @@ The complete Bill-of-Materials for this [Industruino](http://www.industruino.com
 ![image of Wiring Diagram](Pneumatic System Wiring Diagram.jpg)
 
 
-
-
 ### Recommended Computer for Controlling the Pneumatics Device
 [Arduino](http://www.arduino.cc/), [Industruino](https://industruino.com), and [Processing](http://processing.org/) are all cross-platform hardware and software systems, making them super awesome! **As such, this setup works well with Linux, MacOS, and Windows computer systems.**
 
 To use this equipment you will need a tethered computer and display for live control of the pneumatic system. This could be a computer laptop, or even a very simple and low cost single board computer such as a [Raspberry Pi](https://www.raspberrypi.org/). Setting up and configuring a Raspberry Pi is outside the scope of this README, but if you're interested, we direct you to the [Rice Bioe 421/521 Microcontroller Applications](https://github.com/jmil/Bioe421_521-MicrocontrollerApplications) class; all the labs are available online and Lab 01 gets you going configuring a Raspberry Pi and getting it on the Internet and installing Arduino software.
 
 ##Software Installation Instructions
+**Note: To make these instructions as clear as possible, we've included computer screenshots throughout the following sections. However, for the sake of space and clarity, only some images are embedded in full on this README, while others are provided as links. Please make use of the links as needed and note that all images can be found in the PicsVids folder of this repository.**
 
 ###Uploading Firmware to Industruino
 1. Download the latest version of Arduino for your OS from [https://www.arduino.cc/en/Main/Software](https://www.arduino.cc/en/Main/Software)
-**Note: Arduino versions 1.6.* or higher are required to communicate with Industruino using the indio.h library**
+**Note: Arduino versions 1.6.* or higher are required to communicate with Industruino using the Indio library**
 1. Connect Industruino to your computer via USB connection and open Arduino.
 1. On the Arduino taskbar, navigate to `Tools`->`Board` and select `Arduino Leonardo`. Next, navigate to `Tools`->`Port` and select the COM port assigned to Industruino.
 On Windows, the correct COM port can be determined by locating `Arduino Leonardo` under the `Ports` dropdown in Device Manager. For Mac and Linux operating systems, Arduino Leonardo is listed beginning with `/dev/tty`. The exact port number can be determined using our troubleshooting guide (see below), or you may guess and check (see step 4).
@@ -122,7 +121,7 @@ Figure 3. Demonstration of Processing GUI functionality and the three pneumatic 
 
 ###Troubleshooting: Use `CheckSerialPort.pde` to Determine Port Number
 
-**NOTE: As detailed above, this equipment is compatible with Linux, Mac, and Windows systems because Arduino, Industruino, and Processing are compatible with those systems. The below details are for Windows and MacOS. Other platform-specific instructions may be provided at a later time.**
+**NOTE: As detailed above, this equipment is compatible with Linux, Mac, and Windows systems because Arduino, Industruino, and Processing are compatible with those systems. This section is split into instructions based on operating system, as each has a different method of naming and assigning serial ports. Please refer to the instructions for the OS you are using.**
 
 ####On Windows:
 
