@@ -56,11 +56,11 @@ To use this equipment you will need a tethered computer and display for live con
 ###Uploading Firmware to Industruino
 1. Download the latest version of Arduino for your OS from [https://www.arduino.cc/en/Main/Software](https://www.arduino.cc/en/Main/Software)
 **Note: Arduino versions 1.6.* or higher are required to communicate with Industruino using the indio.h library**
-1. Connect Industruino to your computer via USB connection and open Arduino
+1. Connect Industruino to your computer via USB connection and open Arduino.
 1. On the Arduino taskbar, navigate to `Tools`->`Board` and select `Arduino Leonardo`. Next, navigate to `Tools`->`Port` and select the COM port assigned to Industruino.
-On Windows, the correct COM port can be determined by locating `Arduino Leonardo` under the `Ports` dropdown in Device Manager. For Mac and Linux operating systems, Arduino Leonardo is listed beginning with `/dev/tty`. The exact port number can be determined using our troubleshooting guide (see below), or you may guess and check (see step 4)
+On Windows, the correct COM port can be determined by locating `Arduino Leonardo` under the `Ports` dropdown in Device Manager. For Mac and Linux operating systems, Arduino Leonardo is listed beginning with `/dev/tty`. The exact port number can be determined using our troubleshooting guide (see below), or you may guess and check (see step 4).
 2. We recommend using the blink sketch included in the Arduino software to test the connection to Industruino. To do this, follow `File`->`Examples`->`01.Basics`->`Blink`.
-If you have the correct board and port selected, your Industruino display should blink once each second after uploading the blink example sketch. This is a simple way to verify your port selection
+If you have the correct board and port selected, your Industruino display should blink once each second after uploading the blink example sketch. This is a simple way to verify your port selection.
 1. Next,  you will need to install a few libraries used in the PneumaticFirmware sketch. First, download the Indio and UC1701 libraries from the [Industruino Github repository] (https://github.com/Industruino/).
 The simplest way to install these libraries is from a ZIP folder, so navigate to the [UC1701] (https://github.com/Industruino/UC1701) and [Indio] (https://github.com/Industruino/Indio) repositories, then click `Clone or download` -> `Download ZIP` in the top right corner.
 1. Return to Arduino and navigate to `Sketch`->`Include Library`->`Add .ZIP Library...`. Locate the ZIP folder for either Indio or UC1701, then repeat this step to install the other library.
@@ -68,13 +68,13 @@ The simplest way to install these libraries is from a ZIP folder, so navigate to
 1. Finally, open `PneumaticFirmware.ino` in Arduino and upload to Industruino using the upload button.
 
 ###Processing and Libraries Installation
-1. Download the latest version of Processing for your OS from [https://processing.org/download/](https://processing.org/download/)
-1. Connect Industruino to computer via USB connection
-1. Open `ProcessingGUI` in Processing and run the program. If all libraries are installed, the GUI will open and you can proceed to the next section. 
+1. Download the latest version of Processing for your OS from [https://processing.org/download/](https://processing.org/download/). Unzip the ZIP folder and move its contents to a desired permanent location (for example, the Documents folder).
+1. Connect Industruino to computer via USB connection.
+1. Open `ProcessingGUI` in Processing and run the program. If all libraries are installed, the GUI will open and you can proceed to the next section.
 If a library is missing, one of the following errors may occur:
 ![image of error in Processing console](PicsVids/ProcessingLibraryError.PNG)
-1. Libraries can be installed by accessing `Sketch`->`Import Library`->`Add Library` on the Processing Taskbar. From this list, find and install the missing libraries. Libraries will automatically install to the Processing sketchbook
-1. Once all the libraries are installed, try to run the GUI again
+1. Libraries can be installed by accessing `Sketch`->`Import Library`->`Add Library` on the Processing Taskbar. From this list, find and install the missing libraries. Libraries will automatically install to the Processing sketchbook.
+1. Once all the libraries are installed, try to run the GUI again.
 
 ###GUI Overview
 The Processing GUI (depicted below) allows the user to specify settings for a pneumatic program. 
@@ -90,11 +90,11 @@ Beneath the sliders, numeric indicators display current program settings and sys
 ###Starting and Understanding a Pneumatics Program
 1. Connect Industruino to computer via USB
 1. Open `ProcessingGUI` in Processing
-1. Run the ProcessingGUI in Processing. If the GUI launches, you are nearly there! If, instead, a port error occurs, you can follow our troubleshooting guide (see below)
+1. Run the ProcessingGUI in Processing. If the GUI launches, you are nearly there! If, instead, a port error occurs, you can follow our troubleshooting guide (see below).
 
 1.	**USAGE NOTE: We use PWM values on the GUI sliders, a purposeful stylistic choice by us.** Using PWM values (from 0-4096) provide the highest possible resolution to controlling the Industruino. You can learn more from the Industruino default programs that come with their sample firmware. Additionally, since users might want to use different pneumatics equipment than what we have selected (notably, with a different psi range than what we are using), using PWM values in the GUI provides the most flexibility for end users. You will have to calibrate they system yourself if you use a pneumatics system different from our recommendation. **We use Industruino in `mA` mode, which maps 0-4096 PWM to 0-20 mA**, and [our recommended IP converter](http://www.omega.com/pptst/IP610.html) takes 4-20 mA signal and outputs 0-30 psi of gas pressure.
 
-1. Specify the desired pneumatic settings by adjusting the sliders under `Choose starting PWM` and `Choose ending PWM` and press `<Enter>` on the keyboard to run the program. You can alternatively run a custom program with a pre-programmed keypress (see Configuration for instructions on creating a custom program)
+1. Specify the desired pneumatic settings by adjusting the sliders under `Choose starting PWM` and `Choose ending PWM` and press `<Enter>` on the keyboard to run the program. You can alternatively run a custom program with a pre-programmed keypress (see Configuration for instructions on creating a custom program).
 
 	**SAFETY NOTE: For safety with pneumatics systems (and to protect pneumatics hardware from high frequency oscillations), the air pressure is not changed "live". Instead, the user should set the desired PWM, then press the `<Enter>` key to send values to the pneumatics system**
 
@@ -122,7 +122,7 @@ Figure 3. Demonstration of Processing GUI functionality and the three pneumatic 
 
 ###Troubleshooting: Use `CheckSerialPort.pde` to Determine Port Number
 
-**NOTE: As detailed above, This equipment is compatible with Linux, Mac, and Windows systems because Arduino, Industruino, and Processing are compatible with those systems. The below details are for Windows, other platform-specific instructions may be provided at a later time.**
+**NOTE: As detailed above, this equipment is compatible with Linux, Mac, and Windows systems because Arduino, Industruino, and Processing are compatible with those systems. The below details are for Windows and MacOS. Other platform-specific instructions may be provided at a later time.**
 
 ####On Windows:
 
@@ -137,8 +137,24 @@ Figure 3. Demonstration of Processing GUI functionality and the three pneumatic 
 	
 		String portName = Serial.list()[0]; //change the 0 to a 1 or 2 etc. to match your port
 
-	Change the bracketed number to the index noted in step 3. These steps can be repeated to troubleshoot any port connectivity issues, as the COM number assigned to Industruino will depend on USB port used and other connected devices
+	Change the bracketed number to the index noted in step 3 (in the example images shown, the correct index is [0]). These steps can be repeated to troubleshoot any port connectivity issues, as the COM number assigned to Industruino will depend on USB port used and other connected devices
 
+####On MacOS:
+
+1. Connect Industruino to the desired USB port on your computer
+2. Open `System Information` and navigate to the `USB` category under `Hardware`. `System Information` can usually be found in the `Utilities` folder within `Applications`. It can also be found by accessing the Apple icon toolbar in the top left corner, then navigating to `About This Mac`->`System Report`. Locate Arduino Leonardo and take note of its Location ID.
+![photo of system information](PicsVids/MacOS_SystemProfiler.png)
+3. Next, open `CheckSerialPort.pde` in Processing and run the program. Active USB connections will be listed, along with their indices in the ports list. Industruino will be listed as `/dev/tty.usbmodemxxx`, where `xxx` are numbers corresponding with Industruino's Location ID, noted in step (2). Take note of the index associated with this device.
+![photo of CheckSerialPort script](PicsVids/MacOS_CheckSerialPort.png)
+4. Open ProcessingGUI and navigate to the following line:
+	
+		String portName = Serial.list()[0]; //change the 0 to a 1 or 2 etc. to match your port
+
+	Change the bracketed number to the index noted in step 3 (in the example images shown, the correct index is [3]). These steps can be repeated to troubleshoot any port connectivity issues, as the Location ID assigned to Industruino will depend on USB port used and other connected devices
+    
+####On Linux:
+
+1.
 
 ##More Configuration Options and Examples
 ###I want to:
