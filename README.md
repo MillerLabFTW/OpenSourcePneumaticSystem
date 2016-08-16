@@ -137,7 +137,7 @@ Figure 3. Demonstration of Processing GUI functionality and the three pneumatic 
 	
 		String portName = Serial.list()[0]; //change the 0 to a 1 or 2 etc. to match your port
 
-	Change the bracketed number to the index noted in step 3 (in the example images shown, the correct index is [0]). These steps can be repeated to troubleshoot any port connectivity issues, as the COM number assigned to Industruino will depend on USB port used and other connected devices
+	Change the bracketed number to the index noted in step 3 (in the example images shown, the correct index is [0]). These steps can be repeated to troubleshoot any port connectivity issues, as the COM number assigned to Industruino could depend on the USB port used and other connected devices
 
 ####On MacOS:
 
@@ -150,12 +150,21 @@ Figure 3. Demonstration of Processing GUI functionality and the three pneumatic 
 	
 		String portName = Serial.list()[0]; //change the 0 to a 1 or 2 etc. to match your port
 
-	Change the bracketed number to the index noted in step 3 (in the example images shown, the correct index is [3]). These steps can be repeated to troubleshoot any port connectivity issues, as the Location ID assigned to Industruino will depend on USB port used and other connected devices
+	Change the bracketed number to the index noted in step 3 (in the example images shown, the correct index is [3]). These steps can be repeated to troubleshoot any port connectivity issues, as the Location ID assigned to Industruino will depend on the USB port used and other connected devices
     
 ####On Linux:
 
-1.
+1. Connect Industruino to the desired USB port on your computer
+2. Open the Linux command line and type the command `dmesg | grep tty`. This will create a list of devices connected via serial ports. In our case, Industruino is the device named `ttyACM0`.
+	![photo of system information](PicsVids/Linux-PneumaticInstall/dmesggreptty.png)
+2. Next, open `CheckSerialPort.pde` in Processing and run the program. Active USB connections will be listed, along with their indices in the ports list. Our Industruino is listed as `/dev/ttyACM0`. Take note of the index associated with this device.
+[Linux CheckSerialPort Example] (https://github.com/MillerLabFTW/OpenSourcePneumaticSystem/blob/master/PicsVids/Linux-PneumaticInstall/Processing-CheckSerialPort.png)
+3. Open ProcessingGUI and navigate to the following line:
+	
+		String portName = Serial.list()[0]; //change the 0 to a 1 or 2 etc. to match your port
 
+	Change the bracketed number to the index noted in step 3 (in the example images shown, the correct index is [0]). These steps can be repeated to troubleshoot any port connectivity issues, as the name and index assigned to Industruino could depend on the USB port used and other connected devices.
+    
 ##More Configuration Options and Examples
 ###I want to:
 ####Change the ramp step size: edit Industruino firmware
