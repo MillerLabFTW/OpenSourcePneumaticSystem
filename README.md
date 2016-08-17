@@ -52,7 +52,7 @@ To use this equipment you will need a tethered computer and display for live con
 ##Software Installation Instructions
 ###Uploading Firmware to Industruino
 1. Download the latest version of Arduino for your OS from [https://www.arduino.cc/en/Main/Software](https://www.arduino.cc/en/Main/Software)
-**Note: Arduino version 1.6.* or higher is required to communicate with Industruino using the Indio library**
+	**Note: Arduino version 1.6.* or higher is required to communicate with Industruino using the Indio library**
 1. Connect Industruino to your computer via USB connection and open Arduino.
 **Linux users: Running Arduino for the first time may result in the prompt pictured below.** Press `Add` to grant permissions to the user account you are using. This allows the account to communicate with Industruino.
 
@@ -98,7 +98,7 @@ If a library is missing, one of the following errors may occur:
 
 1. Libraries can be installed by accessing `Sketch`->`Import Library`->`Add Library` on the Processing Taskbar. From this list, find and install the missing libraries. Libraries will automatically install to the Processing sketchbook.
 
-	![Installing Processing Libraries](PicsVids/Linux-PneumaticInstall/ProcessingLibrariesInstall.png)
+![Installing Processing Libraries](PicsVids/Linux-PneumaticInstall/ProcessingLibrariesInstall.png)
 
 1. Once all the libraries are installed, try to run the GUI again.
 
