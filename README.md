@@ -17,7 +17,7 @@ Our typical configuration operates on a 0-30 psi range, but system components ca
 Figure 1. Our recommended configuration consists of a computer running [Processing](http://www.processing.org), connected via USB to the [Industruino](http://www.industruino.com), which is controlling the pneumatics hardware (in this case, an [IP converter](http://www.omega.com/pptst/IP610.html) and a [Digital Pressure Gauge](http://www.omega.com/pptst/DPG1000.html) from [Omega](http://www.omega.com/)). The pneumatics components are conveniently mounted on an [Onstage DIN-rail desktop rack mount](https://on-stage.com/products/view/11185).
 
 
-![image of Processing GUI](PicsVids/ProcessingGUI.PNG)
+![gif of Processing GUI](PicsVids/ProcessingGUI_Ramp.gif)
 
 Figure 2. The Processing-based graphical user interface to control the pneumatic system.
 
@@ -47,7 +47,7 @@ The complete Bill-of-Materials for this [Industruino](http://www.industruino.com
 ### Recommended Computer for Controlling the Pneumatics Device
 [Arduino](http://www.arduino.cc/), [Industruino](https://industruino.com), and [Processing](http://processing.org/) are all cross-platform hardware and software systems, making them super awesome! **As such, this setup works well with Linux, MacOS, and Windows computer systems.**
 
-To use this equipment you will need a tethered computer and display for live control of the pneumatic system. This could be a computer laptop, or even a very simple and low cost single board computer such as a [Raspberry Pi](https://www.raspberrypi.org/). Setting up and configuring a Raspberry Pi is outside the scope of this README, but if you're interested, we direct you to the [Rice Bioe 421/521 Microcontroller Applications](https://github.com/jmil/Bioe421_521-MicrocontrollerApplications) class; all the labs are available online and Lab 01 gets you going configuring a Raspberry Pi and getting it on the Internet and installing Arduino software.
+To use this equipment you will need a tethered computer and display for live control of the pneumatic system. This could be a computer laptop, or even a very simple and low cost single board computer such as a [Raspberry Pi](https://www.raspberrypi.org/). Setting up and configuring a Raspberry Pi is outside the scope of this README, but if you're interested, we direct you to the [Rice Bioe 421/521 Microcontroller Applications](https://github.com/jmil/Bioe421_521-MicrocontrollerApplications) class; all the labs are available online and Lab 01 gets you going configuring a Raspberry Pi and getting it on the Internet and installing Arduino software.file:///D:/Desktop/MillerLab/Pneumatics%20Github/OpenSourcePneumaticSystem/PicsVids/Linux-PneumaticInstall/BlinkCodeWorks.png
 
 ##Software Installation Instructions
 ###Uploading Firmware to Industruino
