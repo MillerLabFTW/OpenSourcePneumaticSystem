@@ -51,10 +51,10 @@ To use this equipment you will need a tethered computer and display for live con
 
 ##Software Installation Instructions
 ###Uploading Firmware to Industruino
-1. Download the latest version of Arduino for your OS from [https://www.arduino.cc/en/Main/Software](https://www.arduino.cc/en/Main/Software)
+1. Download the latest version of Arduino for your OS from [https://www.arduino.cc/en/Main/Software](https://www.arduino.cc/en/Main/Software). 
 	**Note: Arduino version 1.6.* or higher is required to communicate with Industruino using the Indio library**
 1. Connect Industruino to your computer via USB connection and open Arduino.
-**Linux users: Running Arduino for the first time may result in the prompt pictured below.** Press `Add` to grant permissions to the user account you are using. This allows the account to communicate with Industruino.
+	**Linux users: Running Arduino for the first time may result in the prompt pictured below.** Press `Add` to grant permissions to the user account you are using. This allows the account to communicate with Industruino.
 
 	![Image of Linux permissions prompt](PicsVids/Linux-PneumaticInstall/Add-user-to-Dialout-Group.png)
 
@@ -65,7 +65,7 @@ If you have the correct board and port selected, your Industruino display should
 
 	![Screenshot of successful Blink upload](PicsVids/Linux-PneumaticInstall/BlinkCodeWorks.png)
 
-1. Next, you will need to install a few libraries used in the PneumaticFirmware sketch, or you may get a missing library error.
+1. Next, you will need to install a few libraries used in the PneumaticFirmware sketch, or you may get a missing library error like the one below.
 
 	![Missing Arduino library](PicsVids/Linux-PneumaticInstall/Indio-Missing-Error-Cropped.png)
 
@@ -89,7 +89,7 @@ The simplest way to install these libraries is from a ZIP folder, so follow thes
 ###Processing and Libraries Installation
 1. Download the latest version of Processing for your OS from [https://processing.org/download/](https://processing.org/download/). Unzip the ZIP folder and move its contents to a desired permanent location (for example, the Documents folder).
 
-1. Connect Industruino to computer via USB connection.
+1. Connect Industruino to your computer via USB connection.
 
 1. Open `ProcessingGUI` in Processing and run the program. If all libraries are installed, the GUI will open and you can proceed to the next section.
 If a library is missing, one of the following errors may occur:
@@ -98,7 +98,7 @@ If a library is missing, one of the following errors may occur:
 
 1. Libraries can be installed by accessing `Sketch`->`Import Library`->`Add Library` on the Processing Taskbar. From this list, find and install the missing libraries. Libraries will automatically install to the Processing sketchbook.
 
-![Installing Processing Libraries](PicsVids/Linux-PneumaticInstall/ProcessingLibrariesInstall.png)
+	![Installing Processing Libraries](PicsVids/Linux-PneumaticInstall/ProcessingLibrariesInstall.png)
 
 1. Once all the libraries are installed, try to run the GUI again.
 
@@ -156,7 +156,9 @@ Figure 3. Demonstration of Processing GUI functionality and the three pneumatic 
 
 1. Connect Industruino to the desired USB port on your computer
 1. Open Device Manager and navigate to the `Ports(COM & LPT)` dropdown. Find `Arduino Leonardo` and take note of its assigned COM number
-   ![photo of device manager](PicsVids/DeviceManager_PortNo.PNG)
+  
+	![photo of device manager](PicsVids/DeviceManager_PortNo.PNG)
+
 1. Next, open `CheckSerialPort.pde` in Processing and run the program. Active COM ports will be listed, along with their indices in the ports list. Locate the COM port that Industruino is connected to (determined in step 2), and take note of its index.
 
    ![photo of CheckSerialPort script](PicsVids/CheckSerialPort.PNG)
@@ -165,15 +167,19 @@ Figure 3. Demonstration of Processing GUI functionality and the three pneumatic 
 	
 		String portName = Serial.list()[0]; //change the 0 to a 1 or 2 etc. to match your port
 
-	Change the bracketed number to the index noted in step 3 (in the example images shown, the correct index is [0]). These steps can be repeated to troubleshoot any port connectivity issues, as the COM number assigned to Industruino could depend on the USB port used and other connected devices
+	Change the bracketed number to the index noted in step 3 (in the example images shown, the correct index is [0]). These steps can be repeated to troubleshoot any port connectivity issues, as the COM number assigned to Industruino will depend on the USB port used and other connected devices
 
 ####On MacOS:
 
 1. Connect Industruino to the desired USB port on your computer
 2. Open `System Information` and navigate to the `USB` category under `Hardware`. `System Information` can usually be found in the `Utilities` folder within `Applications`. It can also be found by accessing the Apple icon toolbar in the top left corner, then navigating to `About This Mac`->`System Report`. Locate Arduino Leonardo and take note of its Location ID.
-![photo of system information](PicsVids/MacOS_SystemProfiler.png)
-3. Next, open `CheckSerialPort.pde` in Processing and run the program. Active USB connections will be listed, along with their indices in the ports list. Industruino will be listed as `/dev/tty.usbmodemxxx`, where `xxx` are numbers corresponding with Industruino's Location ID, noted in step (2). Take note of the index associated with this device.
-![photo of CheckSerialPort script](PicsVids/MacOS_CheckSerialPort.png)
+
+	![photo of system information](PicsVids/MacOS_SystemProfiler.png)
+
+3. Next, open `CheckSerialPort.pde` in Processing and run the program. Active USB connections will be listed, along with their indices in the ports list. Industruino will be listed as `/dev/tty.usbmodemxxx`, where `xxx` is numbers corresponding with Industruino's Location ID, noted in step (2). Take note of the index associated with this device.
+
+	![photo of CheckSerialPort script](PicsVids/MacOS_CheckSerialPort.png)
+
 4. Open ProcessingGUI and navigate to the following line:
 	
 		String portName = Serial.list()[0]; //change the 0 to a 1 or 2 etc. to match your port
@@ -184,9 +190,12 @@ Figure 3. Demonstration of Processing GUI functionality and the three pneumatic 
 
 1. Connect Industruino to the desired USB port on your computer
 2. Open the Linux command line and type the command `dmesg | grep tty`. This will create a list of devices connected via serial ports. In our case, Industruino is the device named `ttyACM0`.
-	![photo of system information](PicsVids/Linux-PneumaticInstall/dmesggreptty.png)
+
+	![photo of Linux command dmesg grep tty](PicsVids/Linux-PneumaticInstall/dmesggreptty.png)
+
 2. Next, open `CheckSerialPort.pde` in Processing and run the program. Active USB connections will be listed, along with their indices in the ports list. Our Industruino is listed as `/dev/ttyACM0`. Take note of the index associated with this device.
-[Linux CheckSerialPort Example] (https://github.com/MillerLabFTW/OpenSourcePneumaticSystem/blob/master/PicsVids/Linux-PneumaticInstall/Processing-CheckSerialPort.png)
+
+	![CheckSerialPort Example](PicsVids/Linux-PneumaticInstall/Processing-CheckSerialPort.png)
 3. Open ProcessingGUI and navigate to the following line:
 	
 		String portName = Serial.list()[0]; //change the 0 to a 1 or 2 etc. to match your port
