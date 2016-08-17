@@ -50,21 +50,23 @@ The complete Bill-of-Materials for this [Industruino](http://www.industruino.com
 To use this equipment you will need a tethered computer and display for live control of the pneumatic system. This could be a computer laptop, or even a very simple and low cost single board computer such as a [Raspberry Pi](https://www.raspberrypi.org/). Setting up and configuring a Raspberry Pi is outside the scope of this README, but if you're interested, we direct you to the [Rice Bioe 421/521 Microcontroller Applications](https://github.com/jmil/Bioe421_521-MicrocontrollerApplications) class; all the labs are available online and Lab 01 gets you going configuring a Raspberry Pi and getting it on the Internet and installing Arduino software.
 
 ##Software Installation Instructions
-**Note: To make these instructions as clear as possible, we've included computer screenshots throughout the following sections. However, for the sake of space and clarity, only some images are embedded in full on this README, while others are provided as links. Please make use of the links as needed and note that all images can be found in the PicsVids folder of this repository.**
-
 ###Uploading Firmware to Industruino
 1. Download the latest version of Arduino for your OS from [https://www.arduino.cc/en/Main/Software](https://www.arduino.cc/en/Main/Software)
 **Note: Arduino versions 1.6.* or higher are required to communicate with Industruino using the Indio library**
-1. Connect Industruino to your computer via USB connection and open Arduino.
+1. Connect Industruino to your computer via USB connection and open Arduino. **Linux users:** Running Arduino for the first time may result in the prompt pictured below. Press `Add` to grant permissions to the user account you are using. This allows the account to communicate with Industruino. ![Image of Linux permissions prompt](PicsVids/Linux-PneumaticInstall/Add-user-to-Dialout-Group.png)
 1. On the Arduino taskbar, navigate to `Tools`->`Board` and select `Arduino Leonardo`. Next, navigate to `Tools`->`Port` and select the COM port assigned to Industruino.
 On Windows, the correct COM port can be determined by locating `Arduino Leonardo` under the `Ports` dropdown in Device Manager. For Mac and Linux operating systems, Arduino Leonardo is listed beginning with `/dev/tty`. The exact port number can be determined using our troubleshooting guide (see below), or you may guess and check (see step 4).
 2. We recommend using the blink sketch included in the Arduino software to test the connection to Industruino. To do this, follow `File`->`Examples`->`01.Basics`->`Blink`.
 If you have the correct board and port selected, your Industruino display should blink once each second after uploading the blink example sketch. This is a simple way to verify your port selection.
-1. Next,  you will need to install a few libraries used in the PneumaticFirmware sketch. First, download the Indio and UC1701 libraries from the [Industruino Github repository] (https://github.com/Industruino/).
+![Screenshot of successful Blink upload](PicsVids/Linux-PneumaticInstall/BlinkCodeWorks.png)
+1. Next,  you will need to install a few libraries used in the PneumaticFirmware sketch, or you may get a missing library error.
+![Missing Arduino library](PicsVids/Linux-PneumaticInstall/Indio-Missing-Error-Cropped.png) First, download the Indio and UC1701 libraries from the [Industruino Github repository] (https://github.com/Industruino/).
 The simplest way to install these libraries is from a ZIP folder, so navigate to the [UC1701] (https://github.com/Industruino/UC1701) and [Indio] (https://github.com/Industruino/Indio) repositories, then click `Clone or download` -> `Download ZIP` in the top right corner.
-1. Return to Arduino and navigate to `Sketch`->`Include Library`->`Add .ZIP Library...`. Locate the ZIP folder for either Indio or UC1701, then repeat this step to install the other library.
+![Download ZIPs from Github](PicsVids/Linux-PneumaticInstall/Indio-DownloadZIP.png)
+1. Return to Arduino and navigate to `Sketch`->`Include Library`->`Add .ZIP Library...`. Locate the ZIP folder for either Indio or UC1701 and click `OK`, then repeat this step to install the other library.
+![Image of Arduino -- adding ZIP folder libraries](PicsVids/Include UC1701 Library.png)
 2. Next we'll install the U8glib library. To do this, navigate to `Sketch`->`Include Library`->`Manage Libraries...`. Locate and install the U8glib library.
-1. Finally, open `PneumaticFirmware.ino` in Arduino and upload to Industruino using the upload button.
+1. Finally, open `PneumaticFirmware.ino` in Arduino and upload to Industruino using the upload button. If you are successful, Arduino should display the following. ![Image of successful firmware upload](PicsVids/Linux-PneumaticInstall/Done-Uploading.png)
 
 ###Processing and Libraries Installation
 1. Download the latest version of Processing for your OS from [https://processing.org/download/](https://processing.org/download/). Unzip the ZIP folder and move its contents to a desired permanent location (for example, the Documents folder).
