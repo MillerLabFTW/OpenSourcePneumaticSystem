@@ -167,7 +167,7 @@ Figure 3. Demonstration of Processing GUI functionality and the three pneumatic 
 	
 		String portName = Serial.list()[0]; //change the 0 to a 1 or 2 etc. to match your port
 
-	Change the bracketed number to the index noted in step 3 (in the example images shown, the correct index is [0]). These steps can be repeated to troubleshoot any port connectivity issues, as the COM number assigned to Industruino will depend on the USB port used and other connected devices
+	Change the bracketed number to the index noted in step 3 (in the example images shown, the correct index is [0]). These steps can be repeated to troubleshoot any port connectivity issues, as the COM number assigned to Industruino could depend on the USB port used and other connected devices
 
 ####On MacOS:
 
@@ -184,7 +184,7 @@ Figure 3. Demonstration of Processing GUI functionality and the three pneumatic 
 	
 		String portName = Serial.list()[0]; //change the 0 to a 1 or 2 etc. to match your port
 
-	Change the bracketed number to the index noted in step 3 (in the example images shown, the correct index is [3]). These steps can be repeated to troubleshoot any port connectivity issues, as the Location ID assigned to Industruino will depend on the USB port used and other connected devices
+	Change the bracketed number to the index noted in step 3 (in the example images shown, the correct index is [3]). These steps can be repeated to troubleshoot any port connectivity issues, as the Location ID assigned to Industruino could depend on the USB port used and other connected devices
     
 ####On Linux:
 
