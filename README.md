@@ -70,7 +70,7 @@ If you have the correct board and port selected, your Industruino display should
 	![Missing Arduino library](PicsVids/Linux-PneumaticInstall/Indio-Missing-Error-Cropped.png)
 
 	First, download the Indio and UC1701 libraries from the [Industruino Github repository] (https://github.com/Industruino/).
-The simplest way to install these libraries is from a ZIP folder, so navigate to the [UC1701] (https://github.com/Industruino/UC1701) and [Indio] (https://github.com/Industruino/Indio) repositories, then click `Clone or download` -> `Download ZIP` in the top right corner.
+The simplest way to install these libraries is from a ZIP folder, so follow these links to the [UC1701] (https://github.com/Industruino/UC1701) and [Indio] (https://github.com/Industruino/Indio) repositories, then click `Clone or download` -> `Download ZIP` in the top right corner.
 
 	![Download ZIPs from Github](PicsVids/Linux-PneumaticInstall/Indio-DownloadZIP.png)
 
@@ -88,11 +88,18 @@ The simplest way to install these libraries is from a ZIP folder, so navigate to
 
 ###Processing and Libraries Installation
 1. Download the latest version of Processing for your OS from [https://processing.org/download/](https://processing.org/download/). Unzip the ZIP folder and move its contents to a desired permanent location (for example, the Documents folder).
+
 1. Connect Industruino to computer via USB connection.
+
 1. Open `ProcessingGUI` in Processing and run the program. If all libraries are installed, the GUI will open and you can proceed to the next section.
 If a library is missing, one of the following errors may occur:
-![image of error in Processing console](PicsVids/ProcessingLibraryError.PNG)
+
+	![image of error in Processing console](PicsVids/ProcessingLibraryError.PNG)
+
 1. Libraries can be installed by accessing `Sketch`->`Import Library`->`Add Library` on the Processing Taskbar. From this list, find and install the missing libraries. Libraries will automatically install to the Processing sketchbook.
+
+	![Installing Processing Libraries](PicsVids/Linux-PneumaticInstall/ProcessingLibrariesInstall.png)
+
 1. Once all the libraries are installed, try to run the GUI again.
 
 ###GUI Overview
@@ -108,7 +115,9 @@ Beneath the sliders, numeric indicators display current program settings and sys
 
 ###Starting and Understanding a Pneumatics Program
 1. Connect Industruino to computer via USB
+
 1. Open `ProcessingGUI` in Processing
+
 1. Run the ProcessingGUI in Processing. If the GUI launches, you are nearly there! If, instead, a port error occurs, you can follow our troubleshooting guide (see below).
 
 1.	**USAGE NOTE: We use PWM values on the GUI sliders, a purposeful stylistic choice by us.** Using PWM values (from 0-4096) provide the highest possible resolution to controlling the Industruino. You can learn more from the Industruino default programs that come with their sample firmware. Additionally, since users might want to use different pneumatics equipment than what we have selected (notably, with a different psi range than what we are using), using PWM values in the GUI provides the most flexibility for end users. You will have to calibrate they system yourself if you use a pneumatics system different from our recommendation. **We use Industruino in `mA` mode, which maps 0-4096 PWM to 0-20 mA**, and [our recommended IP converter](http://www.omega.com/pptst/IP610.html) takes 4-20 mA signal and outputs 0-30 psi of gas pressure.
