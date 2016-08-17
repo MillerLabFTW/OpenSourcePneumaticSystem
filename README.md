@@ -17,7 +17,7 @@ Our typical configuration operates on a 0-30 psi range, but system components ca
 Figure 1. Our recommended configuration consists of a computer running [Processing](http://www.processing.org), connected via USB to the [Industruino](http://www.industruino.com), which is controlling the pneumatics hardware (in this case, an [IP converter](http://www.omega.com/pptst/IP610.html) and a [Digital Pressure Gauge](http://www.omega.com/pptst/DPG1000.html) from [Omega](http://www.omega.com/)). The pneumatics components are conveniently mounted on an [Onstage DIN-rail desktop rack mount](https://on-stage.com/products/view/11185).
 
 
-![gif of Processing GUI](PicsVids/ProcessingGUI_Ramp.gif)
+![Gif of Processing GUI](PicsVids/ProcessingGUI_PneumaticModes.gif)
 
 Figure 2. The Processing-based graphical user interface to control the pneumatic system.
 
@@ -25,18 +25,16 @@ Figure 2. The Processing-based graphical user interface to control the pneumatic
 ##Repository Contents
 This git repository includes:
 
+1. Bill of Materials for all the parts we are using
+1. Wiring diagram for electronics configuration
 1. Current firmware for [Industruino IND.I/O kit](https://industruino.com/shop/product/industruino-ind-i-o-kit-2)
 1. Processing GUI to control the Industruino from a computer
-1. Wiring diagram for electronics configuration
-1. Bill of Materials for all the parts we are using
-
 
 ##Hardware Setup
-
-### Setting up the Pneumatic Device
-
+### Bill of Materials
 The complete Bill-of-Materials for this [Industruino](http://www.industruino.com/)-based system are provided in the document `Pneumatic System Bill of Materials` located in this repository. Currently, required items are roughly $500 and the grand total for all recommended items (including the required items) is roughly $1,200. Because [Industruino](http://www.industruino.com/) is DIN-rail mountable, we have included in the recommended items a DIN rail rack desktop mount for flexible configuration, easy wiring, and minimal consumption of desk space.
 
+###Setting up the Pneumatic Device
 [Industruino IND.I/O kit](https://industruino.com/shop/product/industruino-ind-i-o-kit-2) can operate anywhere from 6.5-32V DC. We found some great, high precision pneumatics hardware from Omega that operates at 24V. So, we use a 24V power supply to drive the entire rig.
 
 1. Follow the `Pneumatic System Wiring Diagram` and make sure everything is connected properly. It's critical to make sure you have the Analog Input/Output sharing DC ground (`Wire 6` in the wiring diagram). `Wire 3` is optional, for debugging by reading the output from `Analog OUTPUT CH2` with the input from `Analog INPUT CH2`. `Wire 4`, `Wire 5`, and `Wire 7` are only needed if you want to use a digital pressure gauge to validate the actual output pressure is what you expect it to be. Because Industruino can take 4-20 mA inputs, and the digital pressure gauge we selected outputs its reading over 4-20 mA, we can actually use the Industruino itself to read this independent signal and report to the user (via the Processing GUI) the actual measured output pressure.
@@ -44,27 +42,29 @@ The complete Bill-of-Materials for this [Industruino](http://www.industruino.com
 ![image of Wiring Diagram](Pneumatic System Wiring Diagram.jpg)
 
 
-### Recommended Computer for Controlling the Pneumatics Device
+###Recommended Computer for Controlling the Pneumatics Device
 [Arduino](http://www.arduino.cc/), [Industruino](https://industruino.com), and [Processing](http://processing.org/) are all cross-platform hardware and software systems, making them super awesome! **As such, this setup works well with Linux, MacOS, and Windows computer systems.**
 
 To use this equipment you will need a tethered computer and display for live control of the pneumatic system. This could be a computer laptop, or even a very simple and low cost single board computer such as a [Raspberry Pi](https://www.raspberrypi.org/). Setting up and configuring a Raspberry Pi is outside the scope of this README, but if you're interested, we direct you to the [Rice Bioe 421/521 Microcontroller Applications](https://github.com/jmil/Bioe421_521-MicrocontrollerApplications) class; all the labs are available online and Lab 01 gets you going configuring a Raspberry Pi and getting it on the Internet and installing Arduino software.file:///D:/Desktop/MillerLab/Pneumatics%20Github/OpenSourcePneumaticSystem/PicsVids/Linux-PneumaticInstall/BlinkCodeWorks.png
 
-##Software Installation Instructions
-###Uploading Firmware to Industruino
+##Firmware Installation
+###Installing Arduino
 1. Download the latest version of Arduino for your OS from [https://www.arduino.cc/en/Main/Software](https://www.arduino.cc/en/Main/Software). 
 	**Note: Arduino version 1.6.* or higher is required to communicate with Industruino using the Indio library**
 1. Connect Industruino to your computer via USB connection and open Arduino.
 	**Linux users: Running Arduino for the first time may result in the prompt pictured below.** Press `Add` to grant permissions to the user account you are using. This allows the account to communicate with Industruino.
 
 	![Image of Linux permissions prompt](PicsVids/Linux-PneumaticInstall/Add-user-to-Dialout-Group.png)
-
+    
 1. On the Arduino taskbar, navigate to `Tools`->`Board` and select `Arduino Leonardo`. Next, navigate to `Tools`->`Port` and select the port assigned to Industruino.
 On Windows, the correct COM port can be determined by locating `Arduino Leonardo` under the `Ports` dropdown in Device Manager. For Mac and Linux operating systems, Arduino Leonardo is listed beginning with `/dev/tty`. The exact port number can be determined using our troubleshooting guide (see below), or you may guess and check (see step 4).
+
 2. We recommend using the blink sketch included in the Arduino software to test the connection to Industruino. To do this, follow `File`->`Examples`->`01.Basics`->`Blink`.
 If you have the correct board and port selected, your Industruino display should blink once each second after uploading the blink example sketch. This is a simple way to verify your port selection.
 
 	![Screenshot of successful Blink upload](PicsVids/Linux-PneumaticInstall/BlinkCodeWorks.png)
 
+###Uploading PneumaticFirmware to Industruino
 1. Next, you will need to install a few libraries used in the PneumaticFirmware sketch, or you may get a missing library error like the one below.
 
 	![Missing Arduino library](PicsVids/Linux-PneumaticInstall/Indio-Missing-Error-Cropped.png)
@@ -86,7 +86,8 @@ The simplest way to install these libraries is from a ZIP folder, so follow thes
 
 	![Image of successful firmware upload](PicsVids/Linux-PneumaticInstall/Done-Uploading-Cropped.png)
 
-###Processing and Libraries Installation
+##ProcessingGUI Installation
+###Installing Processing and Libraries
 1. Download the latest version of Processing for your OS from [https://processing.org/download/](https://processing.org/download/). Unzip the ZIP folder and move its contents to a desired permanent location (for example, the Documents folder).
 
 1. Connect Industruino to your computer via USB connection.
