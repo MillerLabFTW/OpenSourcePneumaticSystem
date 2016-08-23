@@ -69,8 +69,8 @@ If you have the correct board and port selected, your Industruino display should
 
 	![Missing Arduino library](PicsVids/Linux-PneumaticInstall/Indio-Missing-Error-Cropped.png)
 
-	First, download the Indio and UC1701 libraries from the [Industruino Github repository] (https://github.com/Industruino/).
-The simplest way to install these libraries is from a ZIP folder, so follow these links to the [UC1701] (https://github.com/Industruino/UC1701) and [Indio] (https://github.com/Industruino/Indio) repositories, then click `Clone or download` -> `Download ZIP` in the top right corner.
+	First, download the Indio and UC1701 libraries from the [Industruino Github repository] (https://github.com/Industruino/libraries).
+The simplest way to install these libraries is from a ZIP folder, so follow these links to the [UC1701] (https://github.com/Industruino/libraries/tree/master/UC1701) and [Indio] (https://github.com/Industruino/libraries/tree/master/Indio) repositories, then click `Clone or download` -> `Download ZIP` in the top right corner.
 
 	![Download ZIPs from Github](PicsVids/Linux-PneumaticInstall/Indio-DownloadZIP.png)
 
