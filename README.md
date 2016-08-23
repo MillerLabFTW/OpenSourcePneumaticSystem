@@ -65,7 +65,7 @@ If you have the correct board and port selected, your Industruino display should
 	![Screenshot of successful Blink upload](PicsVids/Linux-PneumaticInstall/BlinkCodeWorks.png)
 
 ###Uploading PneumaticFirmware to Industruino
-1. Next, you will need to install a few libraries used in the PneumaticFirmware sketch, or you may get a missing library error like the one below.
+1. Next, you will need to install a couple libraries used in the PneumaticFirmware sketch, or you may get a missing library error like the one below.
 
 	![Missing Arduino library](PicsVids/Linux-PneumaticInstall/Indio-Missing-Error-Cropped.png)
 
@@ -77,10 +77,6 @@ The simplest way to install these libraries is from a ZIP folder, so follow thes
 1. Return to Arduino and navigate to `Sketch`->`Include Library`->`Add .ZIP Library...`. Locate the ZIP folder for either Indio or UC1701 and click `OK`, then repeat this step to install the other library.
 
 	![Image of Arduino -- adding ZIP folder libraries](PicsVids/Linux-PneumaticInstall/Include UC1701 Library.png)
-
-2. Next we'll install the U8glib library. To do this, navigate to `Sketch`->`Include Library`->`Manage Libraries...`. Locate and install the U8glib library.
-
-	![Adding U8glib Library](PicsVids/Linux-PneumaticInstall/Install-U8glib.png)
 
 1. Finally, open `PneumaticFirmware.ino` in Arduino and upload to Industruino using the upload button. If you are successful, Arduino should return the following:
 

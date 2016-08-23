@@ -14,8 +14,6 @@ Library is preloaded with calibration data but characterisctics are board specif
 #include <Indio.h>
 #include <Wire.h>
 #include <UC1701.h>
-#include <U8glib.h>
-
 
 // The dimensions of the LCD (in pixels)...
 static const byte LCD_WIDTH = 128;
