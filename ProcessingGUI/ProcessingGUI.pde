@@ -39,7 +39,7 @@ controlP5.Textlabel current_max;
 controlP5.Textlabel current_interval;
 
 controlP5.Textlabel EtoP_label;
-controlP5.Textlabel PWM_label;
+controlP5.Textlabel DAC_label;
 controlP5.Textlabel expected_mA_label;
 controlP5.Textlabel expected_psi_label;
 
@@ -48,14 +48,14 @@ RadioButton modeSelected;
 int myColor = color(18,39,59);
 
 int arduino_EtoP = 610;
-int arduino_PWM = 850;
+int arduino_DAC = 850;
 float psi_low, psi_high;
 float expected_mA = 15;
 float expected_psi = 20;
 
 int sliderValue = 200;
-int min_PWM = 0;
-int max_PWM = 3995;
+int min_DAC = 0;
+int max_DAC = 3995;
 int interval = 1000;
 int arduino_interval;
 
@@ -125,9 +125,9 @@ void setup() {
 
      
 
-  min = cp5.addSlider("min_PWM")
+  min = cp5.addSlider("min_DAC")
      .setPosition(170,50)
-     .setRange(min_PWM,max_PWM) // values can range from big to small as well
+     .setRange(min_DAC,max_DAC) // values can range from big to small as well
      .setSize(500,50)
      .setLabelVisible(false)
      //.setValue(5)
@@ -135,19 +135,19 @@ void setup() {
      .setSliderMode(Slider.FLEXIBLE)
      ;
 
-  min_t = cp5.addTextlabel("min_t","Choose starting PWM",230,10)
+  min_t = cp5.addTextlabel("min_t","Choose starting DAC",230,10)
   .setFont(font)
   .setColorValue(255)
   ;
   
-  current_min = cp5.addTextlabel("min_value",str(min_PWM) + " PWM",10,50)
+  current_min = cp5.addTextlabel("min_value",str(min_DAC) + " DAC",10,50)
   .setFont(font)
   .setColorValue(255)
   ;
 
-  max = cp5.addSlider("max_PWM")
+  max = cp5.addSlider("max_DAC")
      .setPosition(170,160)
-     .setRange(min_PWM,max_PWM) // values can range from big to small as well
+     .setRange(min_DAC,max_DAC) // values can range from big to small as well
      .setSize(500,50)
      .setLabelVisible(false)
      //.setValue(2200)
@@ -157,13 +157,13 @@ void setup() {
 
 
 //float value = min_t.getValue();
-  current_max = cp5.addTextlabel("max_value",str(max_PWM) + " PWM",10,160)
+  current_max = cp5.addTextlabel("max_value",str(max_DAC) + " DAC",10,160)
   .setFont(font)
   .setColorValue(255)
   ;
 
 
-  max_t = cp5.addTextlabel("max_t","Choose ending PWM",230,120)
+  max_t = cp5.addTextlabel("max_t","Choose ending DAC",230,120)
   .setFont(font)
   .setColorValue(255)
   ;
@@ -199,7 +199,7 @@ void setup() {
   .setColorValue(255)
   ;
 
-  PWM_label = cp5.addTextlabel("PWM_used", "PWM: ",10,400)
+  DAC_label = cp5.addTextlabel("DAC_used", "DAC: ",10,400)
   .setFont(font)
   .setColorValue(255)
   ;
@@ -223,8 +223,8 @@ void setup() {
 void draw() {
   background(myColor);
   
-  current_min.setValue(str(min_PWM) + " PWM");
-  current_max.setValue(str(max_PWM) + " PWM");
+  current_min.setValue(str(min_DAC) + " DAC");
+  current_max.setValue(str(max_DAC) + " DAC");
   current_interval.setValue(str(interval) + " ms");
 
   if (mousePressed == true) 
@@ -238,7 +238,7 @@ void draw() {
   
   
    EtoP_label.setValue("Regulator: " + arduino_EtoP + ", interval: " + str(arduino_interval) + " ms");
-   PWM_label.setValue("PWM: " + arduino_PWM);
+   DAC_label.setValue("DAC: " + arduino_DAC);
    expected_mA_label.setValue("Digital Gauge mA: " + expected_mA);
    expected_psi_label.setValue("Digital Gauge psi: " + expected_psi);
    
@@ -284,9 +284,9 @@ void keyPressed() {
     case(ENTER):
        // send GUI-string for processing:
       sendDataToArduino();
-      //myPort.write("2" + ";" + str(min_PWM) + ';' + str(max_PWM) + ';' + str(interval));
+      //myPort.write("2" + ";" + str(min_DAC) + ';' + str(max_DAC) + ';' + str(interval));
       //int theModeToRequest = int(modeSelected.getValue());
-      //myPort.write(str(theModeToRequest) + ";" + str(min_PWM) + ';' + str(max_PWM) + ';' + str(interval));
+      //myPort.write(str(theModeToRequest) + ";" + str(min_DAC) + ';' + str(max_DAC) + ';' + str(interval));
       //myPort.write('\n');
       break;
   }
@@ -294,8 +294,8 @@ void keyPressed() {
 
 void sendDataToArduino() {
       int theModeToRequest = int(modeSelected.getValue());
-      String stringToSend = str(theModeToRequest) + ";" + str((min_PWM)) + ';' + str((max_PWM)) + ';' + str((interval));
-      //String stringToSend = "0;" + str((min_PWM)) + ';' + str((max_PWM)) + ';' + str((interval));
+      String stringToSend = str(theModeToRequest) + ";" + str((min_DAC)) + ';' + str((max_DAC)) + ';' + str((interval));
+      //String stringToSend = "0;" + str((min_DAC)) + ';' + str((max_DAC)) + ';' + str((interval));
       //println("SENDING DATA TO ARDUINO:" + stringToSend);
       myPort.write(stringToSend);
       myPort.write('\n');
@@ -317,11 +317,11 @@ void serialEvent(Serial myPort) {
     //println("RawStringReceivedFromArduino: " + myString + "\t");
     
     //RECALL: FORMAT IS: 1;610,0.00,30.00;1750.00;9.13630;9.63056
-    //    Arduino_string sent to GUI: output channel used (1or2),int which_EtoP,int psi_low,int psi_high, PWM (0-4095),interval(ms);mA(expected),psi(expected)
+    //    Arduino_string sent to GUI: output channel used (1or2),int which_EtoP,int psi_low,int psi_high, DAC (0-4095),interval(ms);mA(expected),psi(expected)
     //String Arduino_string = "1;610,0,30;3650;1000;20.00000;30.00000";
 
     //arduino_EtoP = 610;
-    //arduino_PWM = 850;
+    //arduino_DAC = 850;
     //psi_low, psi_high;
     //arduino_interval;
     //expected_mA = 15;
@@ -335,7 +335,7 @@ void serialEvent(Serial myPort) {
     String[] EtoP_details = split(arduino_strings[1],',');
     
     arduino_EtoP = int(EtoP_details[0]);
-    arduino_PWM = int(arduino_strings[2]);
+    arduino_DAC = int(arduino_strings[2]);
     arduino_interval = int(arduino_strings[3]);
     //expected_mA = float(arduino_strings[3]);
     float testing1 = float(arduino_strings[4]);
