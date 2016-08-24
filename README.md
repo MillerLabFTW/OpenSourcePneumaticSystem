@@ -107,7 +107,7 @@ The large sliders on the GUI allow the user to specify the starting DAC output (
 
 Beneath the sliders, numeric indicators display current program settings and system outputs.
 
-![image of Processing GUI](PicsVids/ProcessingGUI_DAC.PNG)
+![image of Processing GUI](PicsVids/ProcessingGUI_DAC.png)
 
 
 ###Starting and Understanding a Pneumatics Program
