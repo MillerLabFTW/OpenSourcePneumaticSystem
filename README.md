@@ -17,7 +17,7 @@ Our typical configuration operates on a 0-30 psi range, but system components ca
 Figure 1. Our recommended configuration consists of a computer running [Processing](http://www.processing.org), connected via USB to the [Industruino](http://www.industruino.com), which is controlling the pneumatics hardware (in this case, an [IP converter](http://www.omega.com/pptst/IP610.html) and a [Digital Pressure Gauge](http://www.omega.com/pptst/DPG1000.html) from [Omega](http://www.omega.com/)). The pneumatics components are conveniently mounted on an [Onstage DIN-rail desktop rack mount](https://on-stage.com/products/view/11185).
 
 
-![Gif of Processing GUI](PicsVids/ProcessingGUI_PneumaticModes.gif)
+![Gif of Processing GUI](PicsVids/ProcessingGUI_PneumaticModes_DAC.gif)
 
 Figure 2. The Processing-based graphical user interface to control the pneumatic system.
 
@@ -107,7 +107,7 @@ The large sliders on the GUI allow the user to specify the starting DAC output (
 
 Beneath the sliders, numeric indicators display current program settings and system outputs.
 
-![image of Processing GUI](PicsVids/ProcessingGUI.PNG)
+![image of Processing GUI](PicsVids/ProcessingGUI_DAC.PNG)
 
 
 ###Starting and Understanding a Pneumatics Program
@@ -142,7 +142,7 @@ This mode oscillates between the Starting and Ending DAC values, with the `ms in
 RAMP Mode
 This mode steadily ramps DAC output between the Starting and Ending DAC values, with the `ms interval` as the delay between steps. The default Arduino firmware has set the stepsize to be 10 DAC units, but you can change this in the Arduino firmware to be less or more depending on your needs.
 
-![Gif of Pneumatic Modes](PicsVids/ProcessingGUI_PneumaticModes.gif)
+![Gif of Pneumatic Modes](PicsVids/ProcessingGUI_PneumaticModes_DAC.gif)
 Figure 3. Demonstration of the three pneumatic modes described above.
 
 ###Troubleshooting: Use `CheckSerialPort.pde` to Determine Port Number
