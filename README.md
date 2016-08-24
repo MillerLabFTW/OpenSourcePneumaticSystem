@@ -100,10 +100,10 @@ If a library is missing, one of the following errors may occur:
 1. Once all the libraries are installed, try to run the GUI again.
 
 ###GUI Overview
-The Processing GUI (depicted below) allows the user to specify settings for a pneumatic program. 
-The three buttons in the top left corner of the GUI change the behavior of the pneumatic program. Specifically, the system can be programmed to provide a constant PWM, a pulsing PWM between two specified values, or a ramping PWM between two specified values. These behaviors can also be selected by pressing keys 1, 2, or 3 (corresponding to constant, pulse, and ramp, respectively).
+The Processing GUI (depicted below) allows the user to specify settings for a pneumatic program.
+The three buttons in the top left corner of the GUI change the behavior of the pneumatic program. Specifically, the system can be programmed to provide a constant DAC (digital to analogue converter) output, a pulsing DAC output between two specified values, or a ramping output between two specified values. These behaviors can also be selected by pressing keys 1, 2, or 3 (corresponding to constant, pulse, and ramp, respectively).
 
-The large sliders on the GUI allow the user to specify the starting PWM (for constant, pulse and ramp), the ending PWM (for pulse and ramp), and the ms time interval (for pulse and ramp).
+The large sliders on the GUI allow the user to specify the starting DAC output (for constant, pulse and ramp), the ending DAC output (for pulse and ramp), and the ms time interval (for pulse and ramp).
 
 Beneath the sliders, numeric indicators display current program settings and system outputs.
 
@@ -117,11 +117,11 @@ Beneath the sliders, numeric indicators display current program settings and sys
 
 1. Run the ProcessingGUI in Processing. If the GUI launches, you are nearly there! If, instead, a port error occurs, you can follow our troubleshooting guide (see below).
 
-1.	**USAGE NOTE: We use PWM values on the GUI sliders, a purposeful stylistic choice by us.** Using PWM values (from 0-4096) provide the highest possible resolution to controlling the Industruino. You can learn more from the Industruino default programs that come with their sample firmware. Additionally, since users might want to use different pneumatics equipment than what we have selected (notably, with a different psi range than what we are using), using PWM values in the GUI provides the most flexibility for end users. You will have to calibrate they system yourself if you use a pneumatics system different from our recommendation. **We use Industruino in `mA` mode, which maps 0-4096 PWM to 0-20 mA**, and [our recommended IP converter](http://www.omega.com/pptst/IP610.html) takes 4-20 mA signal and outputs 0-30 psi of gas pressure.
+1.	**USAGE NOTE: We use DAC output values on the GUI sliders, a purposeful stylistic choice by us.** Using DAC values (from 0-4096) provide the highest possible resolution to controlling the Industruino. You can learn more from the Industruino default programs that come with their sample firmware. Additionally, since users might want to use different pneumatics equipment than what we have selected (notably, with a different psi range than what we are using), using DAC values in the GUI provides the most flexibility for end users. You will have to calibrate they system yourself if you use a pneumatics system different from our recommendation. **We use Industruino in `mA` mode, which maps 0-4096 DAC to 0-20 mA**, and [our recommended IP converter](http://www.omega.com/pptst/IP610.html) takes 4-20 mA signal and outputs 0-30 psi of gas pressure.
 
-1. Specify the desired pneumatic settings by adjusting the sliders under `Choose starting PWM` and `Choose ending PWM` and press `<Enter>` on the keyboard to run the program. You can alternatively run a custom program with a pre-programmed keypress (see Configuration for instructions on creating a custom program).
+1. Specify the desired pneumatic settings by adjusting the sliders under `Choose starting DAC` and `Choose ending DAC` and press `<Enter>` on the keyboard to run the program. You can alternatively run a custom program with a pre-programmed keypress (see Configuration for instructions on creating a custom program).
 
-	**SAFETY NOTE: For safety with pneumatics systems (and to protect pneumatics hardware from high frequency oscillations), the air pressure is not changed "live". Instead, the user should set the desired PWM, then press the `<Enter>` key to send values to the pneumatics system**
+	**SAFETY NOTE: For safety with pneumatics systems (and to protect pneumatics hardware from high frequency oscillations), the air pressure is not changed "live". Instead, the user should set the desired DAC output, then press the `<Enter>` key to send values to the pneumatics system**
 
 1. Press `0` on the keyboard to stop the program and reset all values to `0`.
 
@@ -134,13 +134,13 @@ The default `ProcessingGUI` has the following THREE MODES:
 	0		Turn off all pneumatics (set them to 0) and go back to CONSTANT mode
 	
 CONSTANT Mode
-Uses the Starting PWM setting, and keeps the pneumatics at that CONSTANT value.
+Uses the Starting DAC setting, and keeps the pneumatics at that CONSTANT value.
 
 PULSE Mode
-This mode oscillates between the Starting and Ending PWM values, with the `ms interval` setting as the delay between each switch, in milliseconds.
+This mode oscillates between the Starting and Ending DAC values, with the `ms interval` setting as the delay between each switch, in milliseconds.
 
 RAMP Mode
-This mode steadily ramps PWM between the Starting and Ending PWM values, with the `ms interval` as the delay between steps. The default Arduino firmware has set the stepsize to be 10 PWM units, but you can change this in the Arduino firmware to be less or more depending on your needs.
+This mode steadily ramps DAC output between the Starting and Ending DAC values, with the `ms interval` as the delay between steps. The default Arduino firmware has set the stepsize to be 10 DAC units, but you can change this in the Arduino firmware to be less or more depending on your needs.
 
 ![Gif of Pneumatic Modes](PicsVids/ProcessingGUI_PneumaticModes.gif)
 Figure 3. Demonstration of the three pneumatic modes described above.
@@ -202,17 +202,17 @@ Figure 3. Demonstration of the three pneumatic modes described above.
 ##More Configuration Options and Examples
 ###I want to:
 ####Change the ramp step size: edit Industruino firmware
-Ramp step size controls the integral interval for PWM steps at each time interval.
-For example, in the GUI configuration shown above we have a 1000ms interval set, and the default ramp step size is 10. This means there will be a 10 PWM change every 1000ms. Edit the following firmware line to change the PWM step size used in ramp mode:
+Ramp step size controls the integral interval for DAC steps at each time interval.
+For example, in the GUI configuration shown above we have a 1000ms interval set, and the default ramp step size is 10. This means there will be a 10 DAC change every 1000ms. Edit the following firmware line to change the DAC step size used in ramp mode:
 	
     int stepSize = 10; // in mA_raw, How many steps should we take? From 0-4095
 
   
 ####Customize the Processing interface
-The resolution on the PWM slider is autoscaled based on the range of PWM available and the size of the GUI window. Thus, if you want greater control precision using your mouse for a certain project, you can restrict the PWM slider to the range you're working in. For instance, changing `min_PWM` to `1000` and `max_PWM` to `2000` would increase the precision of the PWM slider scale in the Processing GUI. The interval line sets the default ms time interval.
+The resolution on the DAC slider is autoscaled based on the range of DAC available and the size of the GUI window. Thus, if you want greater control precision using your mouse for a certain project, you can restrict the DAC slider to the range you're working in. For instance, changing `min_DAC` to `1000` and `max_DAC` to `2000` would increase the precision of the DAC slider scale in the Processing GUI. The interval line sets the default ms time interval.
 
-	int min_PWM = 0;
-	int max_PWM = 3995;
+	int min_DAC = 0;
+	int max_DAC = 3995;
 	int interval = 1000;
     
     
@@ -234,7 +234,7 @@ The relevant section of the `ProcessingGUI` code begins:
 	      break;
 	    ...
 	    
-This section tells Processing to "listen" for keyboard strikes, and to run the following code afterwards. So, if the user presses the `1` key, the modeSelected will be `0`. Recall from above: `modeSelected = 0` corresponds to the `CONSTANT` pneumatic mode where the "starting PWM" value from the GUI is used.
+This section tells Processing to "listen" for keyboard strikes, and to run the following code afterwards. So, if the user presses the `1` key, the modeSelected will be `0`. Recall from above: `modeSelected = 0` corresponds to the `CONSTANT` pneumatic mode where the "starting DAC" value from the GUI is used.
 
 A custom program on a unique keypress can be made simply by adding to this `switch` in the code. The syntax you must have is:
 
@@ -252,7 +252,7 @@ Where **'x'** is the keyboard key you want to activate your program. As another 
       break;
 
 
-**A more sophisticated example:** Here, we demonstrate a pneumatic program that ramps from `1300` to `2100` PWM at a `0`ms interval in continuous RAMP mode. We also synchronized the beginning of the program with an audible tone being played (`tone.wav`). Note that `tone.wav` is set in the `setup()` section with:
+**A more sophisticated example:** Here, we demonstrate a pneumatic program that ramps from `1300` to `2100` DAC at a `0`ms interval in continuous RAMP mode. We also synchronized the beginning of the program with an audible tone being played (`tone.wav`). Note that `tone.wav` is set in the `setup()` section with:
 
 	  // PREPARE WAV FILE TO BE PLAYED
 	  minim = new Minim(this);
@@ -267,8 +267,8 @@ The desired custom program can therefore be activated when pressing the `5` key 
       //Using minim library to simply play the wav file:
       song.play(); 				// play the tone.wav file in the current directory
       song.rewind(); 			// "rewind" it so it can be played again
-      min.setValue(1300);		//specifies the starting PWM
-      max.setValue(2100);		//specifies the ending PWM
+      min.setValue(1300);		//specifies the starting DAC output
+      max.setValue(2100);		//specifies the ending DAC output
       interval = 0;				//specifies the time interval (in ms)
       modeSelected.activate(2);	// specifies the pneumatic behavior (0 = constant, 1 = pulse, 2 = ramp)
       break;
