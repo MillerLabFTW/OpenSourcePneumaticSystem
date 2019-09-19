@@ -2,7 +2,7 @@
 ## An open-source, Arduino-based Pneumatic system developed at Rice University
 
 
-#####[Miller Lab: Physiologic Systems Engineering and Advanced Materials Laboratory](http://millerlab.rice.edu)
+##### [Miller Lab: Physiologic Systems Engineering and Advanced Materials Laboratory](http://millerlab.rice.edu)
 Developed by Jordan Miller, Bagrat Grigoryan, and Paul Greenfield
 
 Documentation by Nick Calafat and Jordan Miller
@@ -22,7 +22,7 @@ Figure 1. Our recommended configuration consists of a computer running [Processi
 Figure 2. The Processing-based graphical user interface to control the pneumatic system.
 
 
-##Repository Contents
+## Repository Contents
 This git repository includes:
 
 1. Bill of Materials for all the parts we are using
@@ -30,11 +30,11 @@ This git repository includes:
 1. Current firmware for [Industruino IND.I/O kit](https://industruino.com/shop/product/industruino-ind-i-o-kit-2)
 1. Processing GUI to control the Industruino from a computer
 
-##Hardware Setup
+## Hardware Setup
 ### Bill of Materials
 The complete Bill-of-Materials for this [Industruino](http://www.industruino.com/)-based system are provided in the document `Pneumatic System Bill of Materials` located in this repository. Currently, required items are roughly $500 and the grand total for all recommended items (including the required items) is roughly $1,200. Because [Industruino](http://www.industruino.com/) is DIN-rail mountable, we have included in the recommended items a DIN rail rack desktop mount for flexible configuration, easy wiring, and minimal consumption of desk space.
 
-###Setting up the Pneumatic Device
+### Setting up the Pneumatic Device
 [Industruino IND.I/O kit](https://industruino.com/shop/product/industruino-ind-i-o-kit-2) can operate anywhere from 6.5-32V DC. We found some great, high precision pneumatics hardware from Omega that operates at 24V. So, we use a 24V power supply to drive the entire rig.
 
 1. Follow the `Pneumatic System Wiring Diagram` and make sure everything is connected properly. It's critical to make sure you have the Analog Input/Output sharing DC ground (`Wire 6` in the wiring diagram). `Wire 3` is optional, for debugging by reading the output from `Analog OUTPUT CH2` with the input from `Analog INPUT CH2`. `Wire 4`, `Wire 5`, and `Wire 7` are only needed if you want to use a digital pressure gauge to validate the actual output pressure is what you expect it to be. Because Industruino can take 4-20 mA inputs, and the digital pressure gauge we selected outputs its reading over 4-20 mA, we can actually use the Industruino itself to read this independent signal and report to the user (via the Processing GUI) the actual measured output pressure.
@@ -42,13 +42,13 @@ The complete Bill-of-Materials for this [Industruino](http://www.industruino.com
 ![image of Wiring Diagram](Pneumatic System Wiring Diagram.jpg)
 
 
-###Recommended Computer for Controlling the Pneumatics Device
+### Recommended Computer for Controlling the Pneumatics Device
 [Arduino](http://www.arduino.cc/), [Industruino](https://industruino.com), and [Processing](http://processing.org/) are all cross-platform hardware and software systems, making them super awesome! **As such, this setup works well with Linux, MacOS, and Windows computer systems.**
 
 To use this equipment you will need a tethered computer and display for live control of the pneumatic system. This could be a computer laptop, or even a very simple and low cost single board computer such as a [Raspberry Pi](https://www.raspberrypi.org/). Setting up and configuring a Raspberry Pi is outside the scope of this README, but if you're interested, we direct you to the [Rice Bioe 421/521 Microcontroller Applications](https://github.com/jmil/Bioe421_521-MicrocontrollerApplications) class; all the labs are available online and Lab 01 gets you going configuring a Raspberry Pi and getting it on the Internet and installing Arduino 
 
-##Firmware Installation
-###Installing Arduino
+## Firmware Installation
+### Installing Arduino
 1. Download the latest version of Arduino for your OS from [https://www.arduino.cc/en/Main/Software](https://www.arduino.cc/en/Main/Software). 
 	**Note: Arduino version 1.6.* or higher is required to communicate with Industruino using the Indio library**
 1. Connect Industruino to your computer via USB connection and open Arduino.
@@ -64,7 +64,7 @@ If you have the correct board and port selected, your Industruino display should
 
 	![Screenshot of successful Blink upload](PicsVids/Linux-PneumaticInstall/BlinkCodeWorks.png)
 
-###Uploading PneumaticFirmware to Industruino
+### Uploading PneumaticFirmware to Industruino
 1. Next, you will need to install a couple libraries used in the PneumaticFirmware sketch, or you may get a missing library error like the one below.
 
 	![Missing Arduino library](PicsVids/Linux-PneumaticInstall/Indio-Missing-Error-Cropped.png)
@@ -82,8 +82,8 @@ The simplest way to install these libraries is from a ZIP folder, so follow thes
 
 	![Image of successful firmware upload](PicsVids/Linux-PneumaticInstall/Done-Uploading-Cropped.png)
 
-##ProcessingGUI Installation
-###Installing Processing and Libraries
+## ProcessingGUI Installation
+### Installing Processing and Libraries
 1. Download the latest version of Processing for your OS from [https://processing.org/download/](https://processing.org/download/). Unzip the ZIP folder and move its contents to a desired permanent location (for example, the Documents folder).
 
 1. Connect Industruino to your computer via USB connection.
@@ -99,7 +99,7 @@ If a library is missing, one of the following errors may occur:
 
 1. Once all the libraries are installed, try to run the GUI again.
 
-###GUI Overview
+### GUI Overview
 The Processing GUI (depicted below) allows the user to specify settings for a pneumatic program.
 The three buttons in the top left corner of the GUI change the behavior of the pneumatic program. Specifically, the system can be programmed to provide a constant DAC (digital to analogue converter) output, a pulsing DAC output between two specified values, or a ramping output between two specified values. These behaviors can also be selected by pressing keys 1, 2, or 3 (corresponding to constant, pulse, and ramp, respectively).
 
@@ -110,7 +110,7 @@ Beneath the sliders, numeric indicators display current program settings and sys
 ![image of Processing GUI](PicsVids/ProcessingGUI_DAC.png)
 
 
-###Starting and Understanding a Pneumatics Program
+### Starting and Understanding a Pneumatics Program
 1. Connect Industruino to computer via USB
 
 1. Open `ProcessingGUI` in Processing
@@ -145,11 +145,11 @@ This mode steadily ramps DAC output between the Starting and Ending DAC values, 
 ![Gif of Pneumatic Modes](PicsVids/ProcessingGUI_PneumaticModes_DAC.gif)
 Figure 3. Demonstration of the three pneumatic modes described above.
 
-###Troubleshooting: Use `CheckSerialPort.pde` to Determine Port Number
+### Troubleshooting: Use `CheckSerialPort.pde` to Determine Port Number
 
 **NOTE: As detailed above, this equipment is compatible with Linux, Mac, and Windows systems because Arduino, Industruino, and Processing are compatible with those systems. This section is split into instructions based on operating system, as each has a different method of naming and assigning serial ports. Please refer to the instructions for the OS you are using.**
 
-####On Windows:
+#### On Windows:
 
 1. Connect Industruino to the desired USB port on your computer
 1. Open Device Manager and navigate to the `Ports(COM & LPT)` dropdown. Find `Arduino Leonardo` and take note of its assigned COM number
@@ -166,7 +166,7 @@ Figure 3. Demonstration of the three pneumatic modes described above.
 
 	Change the bracketed number to the index noted in step 3 (in the example images shown, the correct index is [0]). These steps can be repeated to troubleshoot any port connectivity issues, as the COM number assigned to Industruino could depend on the USB port used and other connected devices
 
-####On MacOS:
+#### On MacOS:
 
 1. Connect Industruino to the desired USB port on your computer
 2. Open `System Information` and navigate to the `USB` category under `Hardware`. `System Information` can usually be found in the `Utilities` folder within `Applications`. It can also be found by accessing the Apple icon toolbar in the top left corner, then navigating to `About This Mac`->`System Report`. Locate Arduino Leonardo and take note of its Location ID.
@@ -183,7 +183,7 @@ Figure 3. Demonstration of the three pneumatic modes described above.
 
 	Change the bracketed number to the index noted in step 3 (in the example images shown, the correct index is [3]). These steps can be repeated to troubleshoot any port connectivity issues, as the Location ID assigned to Industruino could depend on the USB port used and other connected devices
     
-####On Linux:
+#### On Linux:
 
 1. Connect Industruino to the desired USB port on your computer
 2. Open the Linux command line and type the command `dmesg | grep tty`. This will create a list of devices connected via serial ports. In our case, Industruino is the device named `ttyACM0`.
@@ -199,16 +199,16 @@ Figure 3. Demonstration of the three pneumatic modes described above.
 
 	Change the bracketed number to the index noted in step 3 (in the example images shown, the correct index is [0]). These steps can be repeated to troubleshoot any port connectivity issues, as the name and index assigned to Industruino could depend on the USB port used and other connected devices.
     
-##More Configuration Options and Examples
-###I want to:
-####Change the ramp step size: edit Industruino firmware
+## More Configuration Options and Examples
+### I want to:
+#### Change the ramp step size: edit Industruino firmware
 Ramp step size controls the integral interval for DAC steps at each time interval.
 For example, in the GUI configuration shown above we have a 1000ms interval set, and the default ramp step size is 10. This means there will be a 10 DAC change every 1000ms. Edit the following firmware line to change the DAC step size used in ramp mode:
 	
     int stepSize = 10; // in mA_raw, How many steps should we take? From 0-4095
 
   
-####Customize the Processing interface
+#### Customize the Processing interface
 The resolution on the DAC slider is autoscaled based on the range of DAC available and the size of the GUI window. Thus, if you want greater control precision using your mouse for a certain project, you can restrict the DAC slider to the range you're working in. For instance, changing `min_DAC` to `1000` and `max_DAC` to `2000` would increase the precision of the DAC slider scale in the Processing GUI. The interval line sets the default ms time interval.
 
 	int min_DAC = 0;
@@ -216,7 +216,7 @@ The resolution on the DAC slider is autoscaled based on the range of DAC availab
 	int interval = 1000;
     
     
-####Create a custom pneumatic program
+#### Create a custom pneumatic program
 Processing can easily take keyboard input, so we have a section of the `ProcessingGUI` code that allows for custom setup of reproducible pneumatic programs simply by pressing the keyboard key of your choice.
 
 The relevant section of the `ProcessingGUI` code begins:
@@ -274,7 +274,7 @@ The desired custom program can therefore be activated when pressing the `5` key 
       break;
 
 
-##Acknowledgements
+## Acknowledgements
 - Thanks to [Arduino](https://www.arduino.cc) and [Processing](https://processing.org) for the open-source software that enabled us to build our pneumatic system
 - Thanks to [Industruino](https://industruino.com) for designing the Industruino board, and for their detailed help files and general tech support we relied on to develop this system.
 ![MillerLab logo](PicsVids/MillerLab_logo.jpg)
